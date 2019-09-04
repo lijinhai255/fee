@@ -444,42 +444,6 @@ import React, { useState, useEffect, useReducer, useContext } from "react";
 useReducer是useState的可选项，常用于组件有复杂状态逻辑时，类似于redux中reducer概念。
 ````JavaScript
 import React, { useState, useEffect, useReducer, useContext } from "react";
-// 添加fruit状态维护fruitReducer
-// 理解为vuex里面mutations
-function fruitReducer(state, action) {
-  switch (action.type) {
-    case "init":
-      return action.payload;
-    case "add":
-      return [...state, action.payload];
-    default:
-      return state;
-  }
-}
-export default function HooksTest() { 
-     // 组件内的状态不需要了  
-     // const [fruits, setFruits] = useState([]);  
-     // useReducer(reducer，initState)  
-     const [fruits, dispatch] = useReducer(fruitReducer, []);  
-     useEffect(() => {    setTimeout(() => {      
-         // setFruits(["香蕉", "西瓜"]);      
-         // 变更状态，派发动作即可      
-         dispatch({ type: "init", payload: ["香蕉", "西瓜"] });    }, 1000);  }, []);  
-         return (    
-             <div>      
-             {/*此处修改为派发动作*/}      
-             <FruitAdd onAddFruit={pname => dispatch({type: 'add', payload: pname})} />    
-             </div>  
-        )
-}        
-````
-
-### useContex
-
-useContex 用户快速在函数组件中导入上下文
-
-````JavaScript
-import React, { useState, useEffect, useReducer, useContext } from "react";
 
 // 仅展示水果列表
 function FruitList({ fruits, onSetFruit }) {
@@ -581,23 +545,6 @@ export default function HooksTest() {
       </div>
     </Context.Provider>
   );
-}
-
-
-
-export default function HooksTest() {
-  // useState(initialState)，接收初始状态，返回一个由状态和其更新函数组成的数组
-  const [fruits, setFruits] = useState(["香蕉", "西瓜"]);
-  //   const [fruits, setFruits] = useState([]);
-  return (
-    {/* 提供上下文的值 */ }
-    <div>
-      <p>{fruit === "" ? "请选择喜爱的水果：" : `您的选择是：${fruit}`}</p>
-      {/* 列表 */ }
-      <FruitList fruits={fruits} onSetFruit={setFruit} />
-      <FruitAdd onAddFruit={pname => setFruits([...fruits, pname])} />
-    </div >
-  )
 }
 
 ````
