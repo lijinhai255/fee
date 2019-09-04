@@ -303,3 +303,301 @@ export default function Composition() {
   );
 }
 ````
+
+## Hooks
+
+````JavaScript
+npm i react react-dom -S
+````
+
+### 状态钩子 State Hook
+
+* 初始化Hook
+
+````JavaScript
+import React, { useState, useEffect, useReducer, useContext } from "react";
+export default function HooksTest() {
+  // useState(initialState)，接收初始状态，返回一个由状态和其更新函数组成的数组
+  const [fruit, setFruit] = useState("");
+  //   const [fruits, setFruits] = useState([]);
+  return (
+      {/* 提供上下文的值 */}
+      <div>
+        <p>{fruit === "" ? "请选择喜爱的水果：" : `您的选择是：${fruit}`}</p>
+        {/* 列表 */}
+      </div>
+  );
+}
+```` 
+
+* 声明多个状态
+````JavaScript
+import React, { useState, useEffect, useReducer, useContext } from "react";
+// 仅展示水果列表
+export default function HooksTest() {
+  // useState(initialState)，接收初始状态，返回一个由状态和其更新函数组成的数组
+  const [fruits, setFruits] = useState(["香蕉", "西瓜"]);
+  //   const [fruits, setFruits] = useState([]);
+  return (
+    {/* 提供上下文的值 */ }
+    <div>
+      <p>{fruit === "" ? "请选择喜爱的水果：" : `您的选择是：${fruit}`}</p>
+      {/* 列表 */ }
+      <FruitList fruits={fruits} onSetFruit={setFruit} />
+    </div >
+  );
+}
+````
+
+* 用户处理
+
+````JavaScript
+// 声明输入组件
+function FruitAdd(props) {
+  // 使用useContext获取上下文
+  const { dispatch } = useContext(Context);
+
+  // 输入内容状态及设置内容状态的方法
+  const [pname, setPname] = useState("");
+  // 键盘事件处理
+  const onAddFruit = e => {
+    if (e.key === "Enter") {
+      //   props.onAddFruit(pname);
+      dispatch({ type: "add", payload: pname });
+      setPname("");
+    }
+  };
+  return (
+    <div>
+      <input
+        type="text"
+        value={pname}
+        onChange={e => setPname(e.target.value)}
+        onKeyDown={onAddFruit}
+      />
+    </div>
+  );
+}
+
+
+export default function HooksTest() {
+  // useState(initialState)，接收初始状态，返回一个由状态和其更新函数组成的数组
+  const [fruits, setFruits] = useState(["香蕉", "西瓜"]);
+  //   const [fruits, setFruits] = useState([]);
+  return (
+    {/* 提供上下文的值 */ }
+    <div>
+      <p>{fruit === "" ? "请选择喜爱的水果：" : `您的选择是：${fruit}`}</p>
+      {/* 列表 */ }
+      <FruitList fruits={fruits} onSetFruit={setFruit} />
+      <FruitAdd onAddFruit={pname => setFruits([...fruits, pname])} />
+    </div >
+  )
+}
+````
+
+## 副作用钩子 Effect Hook
+useEffect给函数组件增加了执行副作用操作的能力。
+副作用（Side Effect）是指一个 function 做了和本身运算返回值无关的事，比如：修改了全局变量、修改了传入的参数、甚至是 console.log()，所以 ajax 操作，修改 dom 都是算作副作用
+
+* 异步数据获取 
+
+````JavaScript
+import React, { useState, useEffect, useReducer, useContext } from "react";
+  // 异步获取水果列表
+  useEffect(() => {
+    console.log("useEffect");
+    setTimeout(() => {
+      dispatch({ type: "init", payload: ["香蕉", "西瓜"] });
+      //   setFruits(["香蕉", "西瓜"]);
+    }, 1000);
+  }, []); // 依赖为空表示只执行一次
+````
+* 清除工作：有一些副作用是需要清除的，清除工作非常重要的，可以防止引起内存泄露
+````JavaScript
+ // 异步获取水果列表
+  useEffect(() => {
+    console.log("useEffect");
+    setTimeout(() => {
+      dispatch({ type: "init", payload: ["香蕉", "西瓜"] });
+      //   setFruits(["香蕉", "西瓜"]);
+    }, 1000);
+  }, []); // 依赖为空表示只执行一次
+
+  useEffect(() => {
+    document.title = fruit;
+
+    // ajax
+  }, [fruit]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log("msg");
+    }, 1000);
+    //防止内存泄漏
+ return function() {
+      clearInterval(timer);
+    };    
+````
+
+### useReducer
+useReducer是useState的可选项，常用于组件有复杂状态逻辑时，类似于redux中reducer概念。
+````JavaScript
+import React, { useState, useEffect, useReducer, useContext } from "react";
+// 添加fruit状态维护fruitReducer
+// 理解为vuex里面mutations
+function fruitReducer(state, action) {
+  switch (action.type) {
+    case "init":
+      return action.payload;
+    case "add":
+      return [...state, action.payload];
+    default:
+      return state;
+  }
+}
+export default function HooksTest() { 
+     // 组件内的状态不需要了  
+     // const [fruits, setFruits] = useState([]);  
+     // useReducer(reducer，initState)  
+     const [fruits, dispatch] = useReducer(fruitReducer, []);  
+     useEffect(() => {    setTimeout(() => {      
+         // setFruits(["香蕉", "西瓜"]);      
+         // 变更状态，派发动作即可      
+         dispatch({ type: "init", payload: ["香蕉", "西瓜"] });    }, 1000);  }, []);  
+         return (    
+             <div>      
+             {/*此处修改为派发动作*/}      
+             <FruitAdd onAddFruit={pname => dispatch({type: 'add', payload: pname})} />    
+             </div>  
+        )
+}        
+````
+
+### useContex
+
+useContex 用户快速在函数组件中导入上下文
+
+````JavaScript
+import React, { useState, useEffect, useReducer, useContext } from "react";
+
+// 仅展示水果列表
+function FruitList({ fruits, onSetFruit }) {
+  return (
+    <ul>
+      {fruits.map(f => (
+        <li key={f} onClick={() => onSetFruit(f)}>
+          {f}
+        </li>
+      ))}
+    </ul>
+  );
+}
+// 声明输入组件
+function FruitAdd(props) {
+  // 使用useContext获取上下文
+  const { dispatch } = useContext(Context);
+
+  // 输入内容状态及设置内容状态的方法
+  const [pname, setPname] = useState("");
+  // 键盘事件处理
+  const onAddFruit = e => {
+    if (e.key === "Enter") {
+      //   props.onAddFruit(pname);
+      dispatch({ type: "add", payload: pname });
+      setPname("");
+    }
+  };
+  return (
+    <div>
+      <input
+        type="text"
+        value={pname}
+        onChange={e => setPname(e.target.value)}
+        onKeyDown={onAddFruit}
+      />
+    </div>
+  );
+}
+
+// 添加fruit状态维护fruitReducer
+// 理解为vuex里面mutations
+function fruitReducer(state, action) {
+  switch (action.type) {
+    case "init":
+      return action.payload;
+    case "add":
+      return [...state, action.payload];
+    default:
+      return state;
+  }
+}
+
+// 创建上下文
+const Context = React.createContext();
+
+export default function HooksTest() {
+  // useState(initialState)，接收初始状态，返回一个由状态和其更新函数组成的数组
+  const [fruit, setFruit] = useState("");
+  //   const [fruits, setFruits] = useState([]);
+
+  // 参数1是reducer
+  // 参数2是初始值
+  const [fruits, dispatch] = useReducer(fruitReducer, []);
+
+  // 异步获取水果列表
+  useEffect(() => {
+    console.log("useEffect");
+    setTimeout(() => {
+      dispatch({ type: "init", payload: ["香蕉", "西瓜"] });
+      //   setFruits(["香蕉", "西瓜"]);
+    }, 1000);
+  }, []); // 依赖为空表示只执行一次
+
+  useEffect(() => {
+    document.title = fruit;
+
+    // ajax
+  }, [fruit]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log("msg");
+    }, 1000);
+
+    return function() {
+      clearInterval(timer);
+    };
+  }, []);
+
+  return (
+    <Context.Provider value={{ fruits, dispatch }}>
+      {/* 提供上下文的值 */}
+      <div>
+        <FruitAdd />
+        <p>{fruit === "" ? "请选择喜爱的水果：" : `您的选择是：${fruit}`}</p>
+        {/* 列表 */}
+        <FruitList fruits={fruits} onSetFruit={setFruit} />
+      </div>
+    </Context.Provider>
+  );
+}
+
+
+
+export default function HooksTest() {
+  // useState(initialState)，接收初始状态，返回一个由状态和其更新函数组成的数组
+  const [fruits, setFruits] = useState(["香蕉", "西瓜"]);
+  //   const [fruits, setFruits] = useState([]);
+  return (
+    {/* 提供上下文的值 */ }
+    <div>
+      <p>{fruit === "" ? "请选择喜爱的水果：" : `您的选择是：${fruit}`}</p>
+      {/* 列表 */ }
+      <FruitList fruits={fruits} onSetFruit={setFruit} />
+      <FruitAdd onAddFruit={pname => setFruits([...fruits, pname])} />
+    </div >
+  )
+}
+
+````
