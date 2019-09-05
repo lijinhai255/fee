@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        let box = document.querySelector('#box');
+
+
+        // 事件流 - 事件的执行顺序
+        
+        // 因为 事件会冒泡！ - 从小到大
+        // 捕获             - 从大到小
+
+        // 捕获先执行 -> 再执行冒泡
+
+        // 给box添加事件监听 - 同一个事件同时监听多个函数
+        // 第三个参数 是否捕获 
+        box.addEventListener('click',function(){
+            console.log('div捕获')
+        },true)
+
+        document.body.addEventListener('click',function(){
+            console.log('body捕获')
+        },true)
+        
+        document.addEventListener('click',function(){
+            console.log('document捕获')
+        },true)
+
+
+        box.addEventListener('click',function(){
+            console.log('div冒泡')
+        })
+
+        document.body.addEventListener('click',function(){
+            console.log('body冒泡')
+        })
+        
+        document.addEventListener('click',function(){
+            console.log('document冒泡')
+        })
+
+
+
+    </script>
+</body>
+</html>

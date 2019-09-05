@@ -1,0 +1,115 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="nav">
+            <a href="javascript:;">从小到大</a>
+            <a href="javascript:;">打乱顺序</a>
+        </div>
+        <ul>
+            <li><img src="images/8.png" alt="">
+                <p>8-指尖社区</p>
+            </li>
+            <li><img src="images/1.png" alt="">
+                <p>1-温馨办公</p>
+            </li>
+            <li><img src="images/2.png" alt="">
+                <p>2-游戏桌面</p>
+            </li>
+            <li><img src="images/3.png" alt="">
+                <p>3-汽车摇滚</p>
+            </li>
+            <li><img src="images/4.png" alt="">
+                <p>4-狭路相逢</p>
+            </li>
+            <li><img src="images/5.png" alt="">
+                <p>5-棒球小子</p>
+            </li>
+            <li><img src="images/6.png" alt="">
+                <p>6-球鞋动力</p>
+            </li>
+            <li><img src="images/7.png" alt="">
+                <p>7-游戏官网</p>
+            </li>
+            
+        </ul>
+    </div>
+    <script type="text/javascript">
+            // 1. 给按钮添加点击事件
+            // 2. 实现从小到大的排序事件（给LI排序）
+            //    2-1. 排序 需要通过p标签当中的第一个字符
+
+            // 获取的一组元素
+            // document.querySelectorAll('li'); 本身不是一个数组！
+            // 不可以直接调用数组方法！
+
+            // 先将类数组 转成 真数组
+            // Array.from(lis)
+            // [...lis]
+
+            var btns=document.querySelectorAll('.nav a');
+            var ul=document.querySelector('ul');
+            var lis=document.querySelectorAll('li');
+            var arrLis=Array.from(lis);
+
+
+            btns[0].onclick=function(){
+                var _this=this;
+                
+                arrLis.sort(function(li1,li2){
+                    var p1=li1.querySelector('p');
+                    var p2=li2.querySelector('p');
+
+                    if(_this.onOff){
+                        return p2.innerHTML.charAt(0)-p1.innerHTML.charAt(0);
+                    }else{
+                        return p1.innerHTML.charAt(0)-p2.innerHTML.charAt(0);
+                    }
+                });
+
+                // 循环数组
+                arrLis.forEach(function(ele){
+                    // 给一个元素插入dom节点
+                    ul.append(ele);
+                });
+
+
+                //修改按钮的文本内容
+                this.innerHTML=this.onOff?'从小到大':'从大到小';
+
+                this.onOff=!this.onOff;
+            }
+
+
+            // 随机排序
+            btns[1].onclick=function(){
+                // 排序arrLis
+                // 胡乱排序
+                arrLis.sort(function(){
+                    // 返回 正值 从小到大
+                    // 返回 负值 从大到小
+
+                    // Math.random() 随机0-1的值
+
+                    var n=Math.random()-0.5;
+                    // console.log(n);
+                    
+                    return n;
+                });
+
+                arrLis.forEach(function(ele){
+                    ul.append(ele);
+                });  
+            }
+    </script>
+</body>
+
+</html>

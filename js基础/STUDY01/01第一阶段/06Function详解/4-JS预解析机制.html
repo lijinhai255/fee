@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+预解析之后的代码流程：
+var a;
+var a;
+function a(){
+    console.log(1);
+}
+console.log(a); // function a(){console.log(1);} 
+a = 10;
+console.log(a); //  10
+console.log(a); //  10
+a = function(){
+    console.log(2);
+}
+console.log(a); // function(){ console.log(2);}
+
+*/    
+console.log(a); // 
+var a = 10;
+console.log(a); //
+function a(){
+    console.log(1);
+}
+console.log(a); // 
+var a = function(){
+    console.log(2);
+}
+console.log(a); //
+</script>    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="box">
+    <button class="btn">1</button>
+    <button class="btn">2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+</div>
+
+<script>
+// 只能获取到一个元素
+// document.getElementById("idName"); 在文档中通过id来获取元素
+// parent.querySelector("css selector"); 在父级下通个css选择器获取元素(根据选择器匹配到的第0个元素);
+// 获取到一组元素 类数组
+/*
+   parent.getElementsByTagName("标签名");  在父级下通过标签名获取一组元素
+   parent.getElementsByClassName("类名");  在父级下通过类名获取一组元素
+   parent.querySelectorAll("css selector"); 在父级下通个css选择器获取一组元素
+*/
+var box = document.querySelector("#box");
+//var btns = box.getElementsByTagName("button");
+//var btns = box.getElementsByClassName("btn");
+var btns = box.querySelectorAll(".btn");
+console.log(btns);
+</script>    
+</body>
+</html>

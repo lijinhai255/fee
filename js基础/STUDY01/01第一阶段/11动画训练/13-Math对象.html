@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            margin: 200px auto;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+/*
+    tan 正切: 直角三角形对边与邻边的比值
+    sin 正弦: 直角三角形对边与斜边的比值
+    cos 余弦: 直角三角形邻边与斜边的比值
+
+    Math.tan(rad) 正切函数
+
+    Math.PI π圆周率
+
+    rad 弧度
+
+    角度转弧度: deg/180*Math.PI
+*/
+(function(){
+    var box = document.querySelector("#box");
+    var a = 1;
+    var b = 0;
+    var c = 0;
+    var d = 1;
+    var e = 0;
+    var f = 0;
+    // x 轴倾斜
+    function skewX(xDeg){
+        c = Math.tan(xDeg/180*Math.PI);
+        box.style.transform = 'matrix('+a+', '+b+', '+c+', '+d+', '+e+', '+f+')';
+    }
+    // y 轴倾斜
+    function skewY(yDeg){
+        b = Math.tan(yDeg/180*Math.PI);
+        box.style.transform = 'matrix('+a+', '+b+', '+c+', '+d+', '+e+', '+f+')';
+    }
+    skewY(30);
+})();
+</script>
+</body>
+</html>

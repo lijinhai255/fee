@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+        }
+
+        .box2{
+            background: green;
+            top: 300px;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script>
+        let box1 = document.querySelector('.box1')
+        let box2 = document.querySelector('.box2')
+
+
+        function css(el,attr,val){
+            if(arguments.length == 3){
+                el.style[attr] = val + 'px';
+            }else{
+                return parseInt(getComputedStyle(el)[attr]);
+            }
+        }
+
+        
+        drag(box1)
+        drag(box2)
+        
+        function drag(el){
+            el.addEventListener('mousedown',function(e){
+                let start = {
+                    l:e.clientX,
+                    t:e.clientY
+                }
+                let startPos = {
+                    l: css(el,'left'),
+                    t: css(el,'top')
+                }
+                function move(e){
+                    let dis = {
+                        l : e.clientX - start.l,
+                        t : e.clientY - start.t
+                    }
+                    el.style.left = dis.l + startPos.l +'px';
+                    el.style.top = dis.t + startPos.t +'px';
+                    e.preventDefault();
+                }
+
+                document.addEventListener('mousemove',move)
+                document.addEventListener('mouseup',function(){
+                    document.removeEventListener('mousemove',move)
+                },{
+                    once:true
+                })
+            })
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+    /* 动画帧 */
+    @keyframes move {
+        0%{
+            width: 200px;
+        }
+        100% {
+            width: 700px;
+        }
+    } 
+    #box {
+        width:  100px;
+        height: 100px;
+        background: red;
+        animation: move 2s 2s linear infinite alternate;
+    }
+/*
+-webkit-animation(老版本 webkit)
+  - animation-name  动画帧名称
+  - animation-duration 动画持续时间
+  - animation-timing-function 动画形式(参考 transition) 
+  - animation-delay 动画开始前的延迟时间
+  - animation-iteration-count 动画执行次数 number | infinite(无限次)
+  - animation-direction 偶数次动画执行过程 alternate(倒序执行) normal顺序执行
+*/    
+</style>
+</head>
+<body>
+   <div id="box"></div>     
+</body>
+</html>

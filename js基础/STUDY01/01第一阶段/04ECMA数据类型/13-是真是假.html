@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// Boolean(val) 转换成布尔值
+//     - 数字类型：非零的合法数字转换为 true, 零代表 false, NaN 代表 false
+//     - 字符串类型：空字符串转换为false，非空字符串转换为true
+//     - null：转换为false
+//     - 对象：转换为true
+
+//console.log(Boolean(NaN)); // 数字类型：非零的合法数字转换为 true, 零代表 false, NaN 代表 false
+//console.log(Boolean("  "));//字符串类型：空字符串转换为false，非空字符串转换为true
+// null：转换为false
+console.log(Boolean(function(){}));//对象：转换为true
+</script>    
+</body>
+</html>

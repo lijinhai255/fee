@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+    #box {
+        margin: 100px auto;
+        width: 200px;
+        height: 200px;
+        padding: 200px;
+        border: 2px solid #000;
+        perspective: 200px;
+    }
+    #div {
+        transition: 3s;
+        width: 200px;
+        height: 200px;
+        background: red;
+        font: 140px/200px "宋体";
+        color: #fff;
+        text-align: center;
+        transform-style: preserve-3d;
+        /* 在元素进行 3D 变换时，是否保留子元素3d变换*/
+    }
+    #div span {
+        display: block;
+        width: 200px;
+        height: 200px;
+        background: yellow;
+        transform: rotateX(45deg);
+    }
+    #box:hover #div {
+        transform: rotateY(360deg);
+    }    
+</style>
+
+</head>
+<body>
+<div id="box">
+    <div id="div">
+        <span></span>
+    </div>
+</div>    
+</body>
+</html>

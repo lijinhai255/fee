@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    function.apply(this指向谁,[参数1,参数1]) 调用函数，并修改函数中的this指向
+
+    执行函数的 apply 方法，会调用改函数，并且修改函数中的 this 指向
+    apply中第 0 个参数，代表当前执行时，函数中的this指向谁
+    apply中第 1 个参数是个数组，数组中代表了我们要往 函数中传递的参数
+*/    
+function fn(a,b,c){
+    console.log(this,a,b,c);
+}
+fn.apply(document,[1,2,3]);
+</script>    
+</body>
+</html>

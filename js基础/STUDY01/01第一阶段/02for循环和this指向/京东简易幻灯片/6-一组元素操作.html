@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="box">
+    <button class="btn">1</button>
+    <button class="btn">2</button>
+    <button class="btn">3</button>
+    <button class="btn">4</button>
+    <button class="btn">5</button>
+</div>
+
+<script>
+var box = document.querySelector("#box");
+var btns = box.querySelectorAll("button");
+/*
+    !!! 一组元素不能直接操作,只能通过下标操作
+    btns.length 代表是元素的个数
+*/
+console.log(btns[0], btns.length);
+// !!! 一组不能直接操作,哪怕这组元素只有一个
+btns[0].style.background = "red";
+btns[1].style.background = "red";
+btns[2].style.background = "red";
+btns[3].style.background = "red";
+btns[4].style.background = "red";
+// btns[1].style.background = "red";
+// 如果要批量操作一组元素可以使用循环
+</script>    
+</body>
+</html>

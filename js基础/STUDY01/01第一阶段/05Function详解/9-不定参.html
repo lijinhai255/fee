@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function fn(){
+    console.log(arguments);
+    for(var i = 0; i < arguments.length; i++){
+        console.log(arguments[i]);
+    }
+}
+fn(10,10,2,13,12432)
+/*
+    arguments 不定参，可变参  代表 函数的所有实参的集合
+    通过下标获取参数的每一位
+    通过 length 获取 实参的个数
+*/
+</script>    
+</body>
+</html>

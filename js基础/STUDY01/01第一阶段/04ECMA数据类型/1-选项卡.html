@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .option .active {
+            background: red;       
+        }
+        .inner div {
+            font-size: 100px;
+            display: none;
+        }
+        .inner .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <div class="option">
+        <button class="active">选项1</button>
+        <button>选项2</button>
+        <button>选项3</button>
+    </div>
+    <div class="inner">
+        <div class="show">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+    </div>
+</div>  
+<script>
+/*
+获取单个元素
+    document.getElementById("idName");
+    parent.querySelector("css 选择器");
+获取一组元素:
+    parent.getElementsByClassName("class名")
+    parent.getElementsByTagName("标签名")
+    parent.querySelectorAll("css 选择器");   
+*/
+var options = document.querySelectorAll(".option button");
+var inners = document.querySelectorAll(".inner div");
+//console.log(options);
+// options.onclick = function(){
+//     console.log(this);
+// }
+// 一组元素不能直接操作，如果批量操作一组元素，记得循环
+for(var i = 0; i < options.length; i++){
+    options[i].index = i;
+    options[i].onclick = function(){
+      // 在 事件 如果想要知道我们当前操作的是哪一个元素
+      //console.log(this);// this 在事件处理函数中，代表了 触发当前事件的元素
+        
+        for(var i = 0; i < options.length; i++){
+            options[i].classList.remove("active");
+            inners[i].classList.remove("show");
+        }
+        this.classList.add("active");
+        // 在事件中我们如果需要知道，当前操作的是第几个，可以加索引
+        //console.log(this.index);
+        inners[this.index].classList.add("show");
+    };
+}
+</script>  
+</body>
+</html>

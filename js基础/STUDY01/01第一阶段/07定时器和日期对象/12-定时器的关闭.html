@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+     setTimeout(function,delay(延迟时间，单位毫秒)); 
+        延迟型定时器,延迟多长时间做某件事
+     返回值： 定时器的编号
+     setInterval(function(){},间隔时间) 间隔型定时器
+        每间隔多长时间就做某件事
+     返回值： 定时器的编号   
+
+     clearTimeout(定时器编号) 关闭延迟型定时器
+     clearInterval(定时器编号) 关闭间隔型定时器
+*/ 
+// console.log(setTimeout(function(){console.log("a")},1000));   
+// console.log(setTimeout(function(){console.log("b")},1000)); 
+
+var timer = 0;
+timer = setInterval(function(){
+    console.log("a");
+},30); 
+
+var timer2 = 0;
+timer2 = setTimeout(function(){
+    console.log("b");
+},1000); 
+
+document.onclick = function(){
+    clearInterval(timer);
+    clearInterval(timer2);
+};
+</script>    
+</body>
+</html>

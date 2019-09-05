@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>擦出图片</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: rgb(211, 241, 213);
+        }
+        .wrap{
+            position: relative;
+            width: 590px;
+            margin: 100px auto;
+        }
+        .wrap div{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: url(./img.jpg);
+            background-color: rgb(98, 133, 95);
+            background-size: 1000% 1000%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        
+    </div>
+<script>
+/*
+    在 wrap 中 生成 100 div，用 position 排列成 10 行 10列
+
+    left: 0     50px   100px  150px
+       0个宽度 1个宽度 2个宽度 3个宽度
+    top: 0      50px   100px  150px
+       0个高度 1个高度 2个高度 3个高度     
+*/    
+var wrap = document.querySelector(".wrap");
+var inner = "";
+var w = 50;
+var h = 50;
+for(var j = 0; j < 10; j++){
+    for(var i = 0; i < 10; i ++){
+        inner += '<div style="left:'+(i*w)+'px;top:'+(j*h)+'px;background-position: -'+(i*w)+'px -'+(j*h)+'px;"></div>';
+    }
+}
+wrap.innerHTML = inner;
+</script>
+</body>
+</html>

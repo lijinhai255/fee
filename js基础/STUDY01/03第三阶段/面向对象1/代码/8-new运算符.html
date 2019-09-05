@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="mydiv1">
+        <button style="background: red">按钮一</button>
+        <button>按钮二</button>
+        <p style="display: block;">div1</p>
+        <p style="display: none;">div2</p>
+    </div>
+    <div class="mydiv2">
+        <button style="background: red">按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <button>按钮四</button>
+        <button>按钮五</button>
+        <p style="display: block;">div1</p>
+        <p style="display: none;">div2</p>
+        <p style="display: none;">div3</p>
+        <p style="display: none;">div4</p>
+        <p style="display: none;">div5</p>
+    </div>
+    <button class="nextPre">点击我第一个选项卡下一页切换</button>
+    <button class="autoPlay">点击按钮第二个选项卡有自动轮播功能</button>
+</body>
+<script>
+    // new 运算符；
+    // let obj = {};
+    // let obj = new Object();
+    // new 1.执行函数；2.自动创建一个空对象；
+    // 3.把空对象指向另外一对象；4、this绑定到这个空对象；
+    // 5、隐式返还this；
+    // function test(){
+    //     console.log("test...");
+    // }
+    // // test();
+    // new test();
+    // 工厂模式
+    // function Tab(btns, ps) {
+    //     // 加原料
+    //     let obj = {}
+    //     // let tabNum = 4;
+    //     // function psFor(){
+    //     //     console.log("psFor...")
+    //     // }
+    //     // 加工原料
+    //     obj.tabNum = 4;
+    //     obj.psFor = function () {
+    //         console.log("psFor...")
+    //     }
+    //     // 出厂
+    //     return obj;
+    // }
+    // 构造函数；约定俗成首字母大写； constructor
+    function Tab(){
+        // let obj = {}   --->this;
+        this.tabNum = 4;
+        this.psFor = function(){
+            console.log("psFor...")
+        }
+        // return this;
+        // return {
+        //     name:"张三"
+        // }
+
+    }
+    // new 实例化；this-->实例化的对象；
+    // let tab1 = new Tab();
+    // // console.log(tab1);
+    // // tab1.psFor();
+    // let tab2 = new Tab();
+    // tab2.psFor();
+  // 仿写new运算符；new的运行原理； 
+    function myNew(constructor,...arg){
+        let obj = {};
+        // call / aplly /bind
+        constructor.call(obj,...arg);
+        obj.__proto__ = constructor.prototype;
+        return obj;
+    }
+    let tab1 = myNew(Tab);
+    tab1.psFor();
+    let tab2 = myNew(Tab);
+    tab2.psFor();
+
+
+</script>
+
+</html>

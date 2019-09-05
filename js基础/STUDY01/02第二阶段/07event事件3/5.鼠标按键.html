@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top:200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        这是一段文字
+    </div>
+
+    <script>
+        document.addEventListener('mousedown',function(e){
+            // 鼠标按下 
+            // console.log(e)
+            // 0  左键
+            // 1  滚轮
+            // 2  右键
+            console.log(e.button);
+
+        })
+    </script>
+</body>
+</html>

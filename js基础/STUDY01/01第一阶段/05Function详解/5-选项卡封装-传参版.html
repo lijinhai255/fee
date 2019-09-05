@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            background: red;
+        }
+        .inner div{
+            width: 300px;
+            height: 200px;
+            background: #000;
+            font: 50px/200px "宋体";
+            color: #fff;
+            display: none;
+        }
+        .inner .show {
+            display: block;
+        }
+        #wrap2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap" class="wrap">
+    <nav class="nav">
+        <button class="active">选项一</button>
+        <button>选项二</button>
+        <button>选项三</button>
+    </nav>
+    <div class="inner">
+        <div class="show">内容一</div>
+        <div>内容二</div>
+        <div>内容三</div>
+    </div>
+</div>   
+<div id="wrap2" class="wrap">
+        <nav class="nav">
+            <button class="active">选项一</button>
+            <button>选项二</button>
+            <button>选项三</button>
+        </nav>
+        <div class="inner">
+            <div class="show">内容一</div>
+            <div>内容二</div>
+            <div>内容三</div>
+        </div>
+    </div> 
+<script>    
+var wrap = document.querySelector("#wrap")
+var btns = wrap.querySelectorAll(".nav button");
+var inners =  wrap.querySelectorAll(".inner div");
+var now = 0;
+for(var i = 0; i < btns.length; i++){
+    btns[i].index = i;
+    btns[i].onclick = function(){
+        btns[now].classList.remove("active");
+        inners[now].classList.remove("show");
+        this.classList.add("active");
+        inners[this.index].classList.add("show");
+        now = this.index;
+    };
+}
+
+
+
+var wrap2 = document.querySelector("#wrap2")
+var btns2 = wrap2.querySelectorAll(".nav button");
+var inners2 =  wrap2.querySelectorAll(".inner div");
+var now2 = 0;
+for(var i = 0; i < btns2.length; i++){
+    btns2[i].index = i;
+    btns2[i].onclick = function(){
+        btns2[now2].classList.remove("active");
+        inners2[now2].classList.remove("show");
+        this.classList.add("active");
+        inners2[this.index].classList.add("show");
+        now2 = this.index;
+    };
+}
+
+</script>
+</body>
+</html>

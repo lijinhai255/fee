@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            border: blue 1px solid;
+            position: absolute;
+            background: rgba(0,0,255,0.4);
+        }
+
+        .bigBox{
+            height: 300px;
+            border: 1px solid blue;
+        }
+        .list{
+            list-style: none;
+        }
+        .bigBox li,.list li {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            float: left;
+            margin: 20px;
+        }
+
+        .list .active{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <ul class="bigBox"></ul>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+    </ul>
+    <script>
+        // 
+        let listLis = document.querySelectorAll('.list li');
+        let bigBox = document.querySelector('.bigBox');
+
+        document.addEventListener('mousedown',function(e){
+            // 创建div
+            let box = document.createElement('div');
+            box.classList.add('box');
+            document.body.appendChild(box);
+
+
+            let startPos = {
+                l : e.clientX,
+                t : e.clientY
+            }
+
+            function move(e){
+                let dis = {
+                    l: Math.abs(e.clientX - startPos.l),
+                    t: Math.abs(e.clientY - startPos.t)
+                }
+
+                // 框 添加宽高和位置
+                box.style.left = Math.min(e.clientX,startPos.l)+'px';
+                box.style.top = Math.min(e.clientY,startPos.t)+'px';
+                box.style.width = dis.l + 'px';
+                box.style.height = dis.t + 'px';
+
+                
+                // 循环解决多个碰撞检测
+                listLis.forEach(item=>{
+                    // 判断是否被框选
+                    if(isContact(item,box)){
+                        console.log(1)
+                        item.classList.add('active')
+                    }else{
+                        item.classList.remove('active')
+                    }
+                })
+
+            
+                e.preventDefault();
+
+            }
+            document.addEventListener('mousemove',move);
+            document.addEventListener('mouseup',function(){
+                document.removeEventListener('mousemove',move);
+
+                // 删除 ->框  (删除节点)
+                box.remove();
+
+                let activeBox = document.querySelectorAll('.active');
+
+                activeBox.forEach(item=>{
+                    bigBox.appendChild(item)
+                })
+
+            },{
+                once:true
+            })
+
+        })
+
+
+        function isContact(el1,el2){
+            // 获取俩个元素的四条边位置
+            let el1Pos = el1.getBoundingClientRect();
+            let el2Pos = el2.getBoundingClientRect();
+            
+            if(
+                el1Pos.right > el2Pos.left &&
+                el1Pos.left < el2Pos.right  &&
+                el1Pos.bottom > el2Pos.top  &&
+                el1Pos.top < el2Pos.bottom
+            ){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

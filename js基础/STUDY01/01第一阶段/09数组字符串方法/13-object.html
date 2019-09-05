@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+(function(){
+    // var obj = new Object();
+    // obj["name"] = "开课吧";
+    // obj["age"] = 8;
+    var obj = {
+        "name":"开课吧",
+        "age":8
+    };
+    // 获取属性对应的值
+    console.log(obj["name"]);
+    // 添加一个属性
+    obj['母公司'] = "慧科集团";
+    // 修改
+    obj['age'] = 9;
+    // 删除一个属性
+    delete obj['母公司'];
+
+    console.log(obj);
+})();   
+</script>    
+</body>
+</html>

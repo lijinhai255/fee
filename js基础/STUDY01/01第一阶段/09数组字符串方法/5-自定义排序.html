@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>  
+(function(){
+    var arr = ["一","五","四","二","三","零"];
+    var index = {
+        零: 0,
+        一: 1,
+        二: 2,
+        三: 3,
+        四: 4,
+        五: 5
+    };
+    // console.log(index["一"]);
+    // console.log(index["二"]);
+    // console.log(index["三"]);
+    arr.sort(function(n1,n2){
+        return index[n2] - index[n1];
+    });
+    console.log(arr); 
+})();
+</script>    
+</body>
+</html>

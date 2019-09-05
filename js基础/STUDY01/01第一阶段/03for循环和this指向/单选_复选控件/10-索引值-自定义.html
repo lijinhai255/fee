@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .option .active {
+            background: red;       
+        }
+        .inner div {
+            font-size: 100px;
+            display: none;
+        }
+        .inner .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <div class="option">
+        <button>选项1</button>
+        <button class="active">选项2</button>
+        <button>选项3</button>
+    </div>
+    <div class="inner">
+        <div>内容1</div>
+        <div class="show">内容2</div>
+        <div>内容3</div>
+    </div>
+</div>  
+<script>
+var btns = document.querySelectorAll(".option button");
+var inners = document.querySelectorAll(".inner div");
+for(var i = 0; i < btns.length; i++){
+    //btns[i].序号 = i;// 给元素添加一个标准中没有定义的属性 -- 自定义属性
+    btns[i].index = i; // index 索引: 当我们事件需要知道当前操作的元素是第几个时,记得用索引
+    btns[i].onmouseover = fn;
+}
+function fn(){
+    for(var i = 0; i < btns.length; i++){
+        btns[i].classList.remove("active");
+        inners[i].classList.remove("show");
+    }
+    this.classList.add("active");
+    // 找打 当前 .option button 对应的 .inner div 加上 show
+    // 对应：第0个按钮对应 第0个 inner,第1个按钮对应 第1个 inner,第2个按钮对应 第2个 inner
+    // 要找到对应的 inner 我们就得知道 this 是第几个btns
+    // console.log(this.序号);// id中存储是元素的序号
+    // inners[this.序号].classList.add("show");
+    console.log(this.index);// id中存储是元素的序号
+    inners[this.index].classList.add("show");
+}
+</script>  
+</body>
+</html>

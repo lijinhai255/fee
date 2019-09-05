@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="height: 600px;">
+    <script>
+        // 事件名 不用加on
+        // 事件执行函数 
+        // true 捕获顺序执行
+        // {capture:true} 捕获执行
+        // {once:true} 只监听一次事件
+        // {passive:true} 禁止默认事件被阻止
+
+
+        // 事件执行顺序 是冒泡执行（默认）
+
+        document.addEventListener('click',function(e){
+            console.log('document')
+            // 阻止浏览器默认行为
+            e.preventDefault();
+        },{
+            capture:true,
+            once :true,
+            passive:true
+        })
+
+        document.body.addEventListener('click',function(){
+            console.log('body')
+        },{
+            
+        })
+    </script>
+</body>
+</html>

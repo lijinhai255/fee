@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div style="width:100px;height:100px;background:Red;position:absolute;left:0;top:0;transition: .5s;"></div>
+<!--
+    每次点击div 让div向前移动 100px
+-->
+<script>
+var div = document.querySelector("div");
+div.onclick = function(){
+    // 每次点击时需要让 div 在现有的位置上向前移动 100 
+    //console.log(this.style.left);
+    var l = this.style.left;
+    //console.log(typeof l);
+    //console.log( l + 100);
+    l = parseInt(l);
+    //console.log(typeof l);
+    this.style.left = l + 100 + "px";
+};
+</script>
+</body>
+</html>

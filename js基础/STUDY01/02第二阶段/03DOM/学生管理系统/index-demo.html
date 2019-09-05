@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="form">
+            <p>姓名<input id="username" type="text" value="miaov" /></p>
+            <p>年龄<input id="age" type="text" value="18" /></p>
+            <p>性别
+                <select id="gender">
+                    <option>男</option>
+                    <option>女</option>
+                    <option>你猜</option>
+                </select>
+            </p>
+            <p><input type="button" value="添加" id="addBtn" /></p>
+        </div>
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>
+                        <label>
+                            <input type="checkbox" id="checkAll" />
+                            全选
+                        </label>
+                    </th>
+                    <th>
+                        id
+                    </th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                    <th><a href="javascript:;" id="removeChecked">删除</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <th>1</th>
+                </tr>
+                <tr>
+                        <th>1</th>
+                    </tr> -->
+            </tbody>
+            <!-- <tbody>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                </tbody> -->
+        </table>
+    </div>
+
+<script>
+    {
+        let addBtn = document.querySelector('#addBtn');
+        let username = document.querySelector('#username');
+        let age = document.querySelector('#age');
+        let gender = document.querySelector('#gender');
+        let tBody = document.querySelector('#table tbody');
+        let checkAll = document.querySelector('#checkAll');
+        let removeChecked = document.querySelector('#removeChecked');
+        let id = 0;
+
+        function isCheckAll(){
+            let checks = tBody.querySelectorAll('input[type=checkbox]');
+            // console.log(checks);
+            // return [...checks].every(item=>item.checked);
+            checkAll.checked = [...checks].every(item=>item.checked)&&checks.length>0;
+        }
+
+        // 全选
+        checkAll.onclick=function(){
+            let checks = tBody.querySelectorAll('input[type=checkbox]');
+            checks.forEach((item)=>{
+                item.checked = checkAll.checked;
+            })
+        }
+
+        // 批量删除
+        removeChecked.onclick = function(){
+            let checkedBoxs = tBody.querySelectorAll('input:checked');
+            // console.log(checkedTr);
+            checkedBoxs.forEach(item=>{
+                let tr = item.parentNode.parentNode;
+                tr.remove();
+            });
+            isCheckAll();
+        }
+
+        addBtn.onclick=function(){
+            // 创建tr
+            let tr = document.createElement('tr');
+            // 创建第一个th
+            let th1 = document.createElement('th');
+            // 创建input checkbox
+            let checkBox = document.createElement('input');
+            // 添加属性
+            checkBox.type = 'checkbox';
+
+            checkBox.onclick=function(){
+                //    console.log(isCheckAll()) ;
+                isCheckAll()
+            }
+
+            // 插入input
+            th1.appendChild(checkBox);
+            // 插入th
+            tr.appendChild(th1);
+
+            // 创建第2个th
+            let th2 = document.createElement('th');
+            th2.innerHTML = id++;
+            // 插入th
+            tr.appendChild(th2);
+
+            // 创建第3个th
+            let th3 = document.createElement('th');
+            th3.innerHTML = username.value;
+            // 插入th
+            tr.appendChild(th3);
+
+            // 创建第4个th
+            let th4 = document.createElement('th');
+            th4.innerHTML = age.value;
+            // 插入th
+            tr.appendChild(th4);
+
+            // 创建第5个th
+            let th5 = document.createElement('th');
+            th5.innerHTML = gender.value;
+            // 插入th
+            tr.appendChild(th5);
+
+            // 创建第6个th
+            let th6 = document.createElement('th');
+            let down = document.createElement('a');
+            down.href = 'javascript:;';
+            down.innerHTML = '↓';
+            // 添加向下切换事件
+            down.onclick=function(){
+                // 获取到当前点击的tr
+                let nowTr = down.parentNode.parentNode;
+                //他的兄弟节点
+                let nextTr = nowTr.nextElementSibling;
+                // console.log(nextTr)
+
+                // 参数1 当前要换位置的tr ， 参数2：将要插入的位置（某某之前）
+                if(nextTr){
+                    tBody.insertBefore(nextTr,nowTr);
+                }else{
+                    tBody.insertBefore(nowTr,tBody.children[0]);
+                }
+            }
+            th6.appendChild(down);
+            tr.appendChild(th6);
+
+            let up = document.createElement('a');
+            up.href = 'javascript:;';
+            up.innerHTML = '↑';
+            up.onclick=function(){
+                // 获取到当前点击的tr
+                let nowTr = down.parentNode.parentNode;
+                //他的兄弟节点
+                let preTr = nowTr.previousElementSibling;
+                // insetBefore 第二个参数 可以不传 - 会默认按照appendChild走
+                tBody.insertBefore(nowTr,preTr);
+            }
+
+            th6.appendChild(up);
+            tr.appendChild(th6);
+
+            let th7 = document.createElement('th');
+            let remove = document.createElement('a');
+            remove.innerHTML = '删除'
+            remove.href = 'javascript:;'
+            remove.onclick = function(){
+               let nowTr = remove.parentNode.parentNode;
+               nowTr.remove();
+
+               //验证是否全选
+               isCheckAll()
+            }
+            th7.appendChild(remove);
+            tr.appendChild(th7);
+
+            // 将tr添加到tbody上
+            tBody.appendChild(tr);
+
+            //验证是否全选
+            isCheckAll()
+        }
+    }
+</script>
+</body>
+
+</html>

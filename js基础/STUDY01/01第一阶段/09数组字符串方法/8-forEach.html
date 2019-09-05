@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button>a</button> 
+<button>b</button> 
+<button>c</button> 
+<button>d</button>    
+<script>
+// var arr = ["a","b","c","d","e"];
+// /*
+//     arr.forEach(function(item,index){
+
+//     }); //循环数组的每一位
+// */    
+// arr.forEach(function(item,index){
+//     console.log(item,index);
+//     /*
+//         item 数组这一位的值
+//         index 数组这一位的索引
+//     */
+// });
+(function(){
+    var btns = document.querySelectorAll("button");
+    //console.log(btns);
+    btns.forEach(function(item,index){
+        item.onclick = function(){
+            console.log(index);
+        };
+        //console.log(item,index);
+    });
+})();
+</script>    
+</body>
+</html>

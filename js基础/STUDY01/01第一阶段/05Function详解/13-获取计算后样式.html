@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition: .5s;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div> 
+<script src="index.js"></script>
+<script>
+var box = _id("box");
+box.onclick = function(){
+    // 点击时获取box的宽度 在原有基础上 + 100
+    // console.log(box.style); // style 获取的是行间样式
+    // 获取计算后样式
+    /*
+       window.getComputedStyle(el) 获取元素的计算后样式
+       在js中使用 window 下的方法 window 默认可以不写
+
+       计算后样式：优先级最高的这条样式，也就是元素当前显示出来的样式
+       getComputedStyle(el)["样式名"]
+
+       // 扩展： IE8及以下不支持getComputedStyle,需要使用el.currentStyle["样式名"]
+    */
+    //console.log(getComputedStyle(box)['marginLeft']);
+    console.log(box.currentStyle["width"])
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // promise的使用
+        // promise 下有俩个参数 分别是 resolve 和 reject 
+
+        // pending 等待状态
+        // resolve 成功状态
+        // reject  失败状态
+
+        // p 实例
+        let p = new Promise((resolve,reject)=>{
+            // 异步处理
+            setTimeout(function(){
+                console.log('定时器执行')
+                resolve('成功了123')
+            },3000)
+        });
+
+        console.log('21:',p);
+       //then 是在promise返回结果之后才执行
+
+    //    then里面可以传递2个函数
+    //  第一个函数 成功时执行的函数
+    // 第二个函数  失败时执行的函数
+       p.then((info)=>{
+            console.log(info)
+            console.log('成功时执行')
+       },()=>{
+           console.log('失败时执行')
+       });
+    </script>
+</body>
+</html>

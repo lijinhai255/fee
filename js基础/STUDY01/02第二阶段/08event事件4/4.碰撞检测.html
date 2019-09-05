@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+        }
+
+        .box2{
+            background: green;
+            top: 300px;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script>
+        let box1 = document.querySelector('.box1')
+        let box2 = document.querySelector('.box2')
+
+
+        function css(el,attr,val){
+            if(arguments.length == 3){
+                el.style[attr] = val + 'px';
+            }else{
+                return parseInt(getComputedStyle(el)[attr]);
+            }
+        }
+
+        box1.addEventListener('mousedown',function(e){
+            let start = {
+                l:e.clientX,
+                t:e.clientY
+            }
+            let startPos = {
+                l: css(box1,'left'),
+                t: css(box1,'top')
+            }
+            function move(e){
+                let dis = {
+                    l : e.clientX - start.l,
+                    t : e.clientY - start.t
+                }
+                box1.style.left = dis.l + startPos.l +'px';
+                box1.style.top = dis.t + startPos.t +'px';
+            }
+
+            document.addEventListener('mousemove',move)
+            document.addEventListener('mouseup',function(){
+                document.removeEventListener('mousemove',move)
+            },{
+                once:true
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var arr = ["a","b","c","d","e","f"];
+/*
+    splice(start,length,data1,data2……); 替换
+        start 从第几位开始替换
+        length 从替换掉几位
+        data1,data2…… 要替换进去的数据
+*/
+// arr.splice(1,1,"B","C","D")
+// console.log(arr);
+/*
+   splice(start,length) 指定位删除
+   不传要替换的数据，就是指定位删除
+*/
+// arr.splice(1,2);
+// console.log(arr);
+/*
+   splice(start,0,data1,data2……) 
+   一位都不替换，就是指定位添加
+*/
+arr.splice(1,0,"A","B")
+console.log(arr);
+</script>    
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top:200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+
+        let box = document.querySelector('.box');
+
+        document.addEventListener('keydown',function(e){
+            // console.log(e.key) //获取键值
+            // console.log(e.ctrlKey) 
+
+            // 复合键 - 多个按键同时触发 - 复制 ctrl+c 
+
+            // ctrl  e.ctrlKey
+            // alt   e.altKey
+            // shift e.shiftKey
+
+            if(e.keyCode == 67 && e.ctrlKey){
+                alert('你是不是想复制？')
+            }
+
+
+        })
+    </script>
+</body>
+</html>

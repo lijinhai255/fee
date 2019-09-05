@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<ul class="list"></ul>    
+<ul class="menuList"></ul>
+<script>
+// 全局变量污染：大家都在全局中写代码，会容易命名冲突，导致代码冲突
+
+/*
+    养成一个好习惯，不要在全局去声明变量
+*/
+(function (){ // 命名空间
+    // 小明的代码
+    var list = document.querySelector(".list");
+    console.log(list);
+    /////
+})();
+
+
+(function (){
+// 小茹的代码
+    var list = document.querySelector(".menuList");
+    console.log(list);
+/////
+})();
+</script>    
+</body>
+</html>

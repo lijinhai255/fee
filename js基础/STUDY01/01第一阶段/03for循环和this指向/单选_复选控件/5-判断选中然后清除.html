@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title></title>
+  <link rel="stylesheet" href="./radio.css">
+</head>
+
+<body>
+<div class="box">
+  <div class="option">
+    <a href="javascript:;" class="checked">男</a>
+    <a href="javascript:;">女</a>
+    <a href="javascript:;">保密</a>
+  </div>
+</div>
+<script>
+var options = document.querySelectorAll(".option>a");
+for(var i = 0; i < options.length; i++){ //页面加载时 执行，作用是批量添加事件
+  console.log("事件外的循环")
+  options[i].onclick = fn;
+}
+function fn(){
+      // 事件触发之后执行
+      console.log("事件里的循环")
+      for(var j = 0; j < options.length; j++){ //找到每一项,然后进行操作
+        if(this == options[j]){ // this 是当前操作的 option，如果options[i] 和 this 相当 说明 option[i] 就是我们当前操作的这一项 
+            //console.log("当前点击的是第"+ i );
+            this.classList.add("checked");
+        } else {
+            options[j].classList.remove("checked");
+        }
+      }
+  }
+</script>
+</body>
+
+</html>

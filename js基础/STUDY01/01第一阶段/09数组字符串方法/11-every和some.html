@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var arr =  ["a","b","c",false,"e"];
+/*
+    every 方法，每一项都返回true 才会返回 true，如果有一项返回了false就返回false
+*/
+var isAllTrue = arr.every(function(item,index){
+        return item;
+});
+console.log(isAllTrue);
+/*
+    some 方法，有一项返回true,就返回true,全都返回false 才会返回false
+*/
+var isSomeTrue = arr.some(function(item,index){
+        return item;
+});
+console.log(isSomeTrue);
+</script>    
+</body>
+</html>

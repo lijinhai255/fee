@@ -1,0 +1,8 @@
+<script>
+var arr = [1,2];
+var arr2 = arr.concat(); // concat 连接并返回新数组
+// arr2 = [1,2,[]];
+// splice 替换，并返回被替换的内容组成的数组 []
+arr2.push(arr.splice(1,0));
+console.log(arr,arr2);
+</script>

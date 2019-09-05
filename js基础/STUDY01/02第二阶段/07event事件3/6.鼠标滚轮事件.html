@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top:200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        这是一段文字
+    </div>
+
+    <script>
+    // chrome 、ie  
+    // 鼠标滚轮滚动事件
+    document.addEventListener('mousewheel',function(e){
+        // wheelDelta > 0 向上
+        // wheelDelta < 0 向下
+        // console.log(e.wheelDelta)
+        if(e.wheelDelta>0){
+            console.log('向上')
+        }else{
+            console.log('向下')
+        }
+    })
+
+    // firefox
+    document.addEventListener('DOMMouseScroll',function(e){
+        // console.log(e.detail)
+        // > 0 向下
+        // < 0 向上
+        if(e.detail > 0 ){
+           console.log('向下') 
+        }else{
+           console.log('向上')
+        }
+    })
+    </script>
+</body>
+</html>

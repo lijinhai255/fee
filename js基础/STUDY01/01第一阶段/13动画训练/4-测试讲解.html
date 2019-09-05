@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var a = 10;
+setTimeout(function(){
+    a = 20; //注意 定时器中内容是达到了时间之后，才执行的
+},50);
+// 下边的代码，不会等待定时器执行完之后，才执行
+console.log(a); 
+// 注意：会先执行定时器后边的正常代码，执行完之后，才会执行定时器中的代码   
+</script>    
+</body>
+</html>

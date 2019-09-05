@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+    /* 动画帧 */
+    @keyframes move {
+        0%{
+            width: 200px;
+        }
+        100% {
+            width: 700px;
+        }
+    } 
+    #box {
+        width: 100px;
+        height: 100px;
+        background: red;
+        animation: move 2s linear both 4;
+    }
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+(function(){
+    var box = document.querySelector("#box");
+    box.addEventListener("animationstart",function(){
+        console.log("动画开始");
+    });
+    box.addEventListener("animationend",function(){
+        console.log("动画结束");
+    });
+    // animationiteration 动画多次执行时，使用，监听动画又开始
+    box.addEventListener("animationiteration",function(){
+        console.log("动画又开始");
+    });
+})();
+</script>         
+</body>
+</html>

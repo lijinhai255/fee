@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>  
+/*
+    通常来说一段程序代码中使用的变量和函数并不总是可用的，限定其可用性的范围即作用域，作用域的使用提高了程序逻辑的局部性，增强程序的可靠性，减少名字冲突
+    作用域: 数据起作用的范围，（某条数据可以在什么范围内使用）
+    
+    - 全局作用域
+        1. 通过 var 或 function 声明在全局中(任意函数之外)的数据，在全局的任意地方都可以调用或者修改 - 全局变量
+
+    - 局部作用域
+        - 函数作用域
+        1. 声明在某个函数中的数据(var,function,参数)，就只能在该函数内容使用 - 函数的局部数据(局部变量)
+*/
+var a = 0;//声明在任意函数之外，就是全局变量  
+console.log(a);
+function fn(){
+    var b = 10;
+    console.log(a);
+    a = 10;
+}
+fn();
+console.log(a);
+console.log(b);
+</script>  
+</body>
+</html>

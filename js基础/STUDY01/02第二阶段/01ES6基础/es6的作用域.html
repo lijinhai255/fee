@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function fn(){
+        //     console.log(this)
+        // }
+
+        // fn()
+
+        // document.onclick=fn;
+
+
+        {
+          console.log(this)
+        }
+
+        let a=()=>{
+            console.log(this)
+        }
+
+        document.onclick= a;
+
+
+        let obj={
+            fn:()=>{
+                console.log(this);
+            }
+        }
+
+        obj.fn()
+
+        let obj2={
+            fn:function(){
+                console.log(this)
+            }
+        }
+
+        obj2.fn()
+    </script>
+</body>
+</html>

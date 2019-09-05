@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #banner {
+            height: 200px;
+            border: 2px solid #000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="banner">这是一个广告弹窗</div>  
+<script>
+(function(){
+    var banner = document.querySelector("#banner");
+    setTimeout(function(){
+        // 2秒之后，显示 广告
+        banner.style.display = "block";
+        setTimeout(function(){
+            // 展示 3秒，在让广告消失
+            banner.style.display = "none";
+        },3000);
+    }, 2000);
+   
+})();
+</script>  
+</body>
+</html>

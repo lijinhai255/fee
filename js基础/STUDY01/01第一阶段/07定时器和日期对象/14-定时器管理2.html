@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+    </style>
+</head>
+<body>    
+<button>自动改变颜色</button>  
+<button>停止</button>  
+
+<div id="box"></div>
+<script>
+(function(){
+    var colors = ["red","blue","yellow","pink","green"];
+    var btn = document.querySelectorAll("button");
+    var box = document.querySelector("#box");
+    var now = 0;
+    var timer = 0; // 数字类型  0 代表 false ,其余合法数字 true
+    /*
+        定时器管理：
+            1. 每次开启新定时器之前，先把旧定时器关掉
+            2. 判断定时器是否在执行，如果在执行就先不开启
+    */
+    btn[0].onclick = function(){
+        if(timer){
+            return; // 函数中读到 return 后边代码就不执行
+        }
+        timer =  setInterval(function(){
+            now++;
+            box.style.background = colors[now%colors.length];
+        },1000);
+    };
+    btn[1].onclick = function(){
+        clearInterval(timer);
+        timer = 0;
+    };
+
+
+})();
+</script>    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>  
+/*
+    在 JS 中，默认情况下 var 声明的全局变量和function 声明的全局函数会挂载在window上
+
+    在 JS 中，默认 我们全局数据都会保存在window下。
+    另外 window 是 JS 在浏览器里的顶层 对象，所以 window的属性 和 方法 也都是全局的
+    在 JS 中 调用 window 下的属性 和 方法，默认可以不写 window
+
+    !!! 只做参考
+*/
+var a = 0;
+console.log(window);
+function fn(){
+    b = 10;
+    console.log(1);
+}
+fn();
+console.log(b);
+</script>  
+</body>
+</html>

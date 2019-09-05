@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    作用域链：JS 中数据的查找规则
+    在 JS 中我们调用一条数据时，会现在当前作用域进行查找，如果找不到，就从向上找父作用域的数据，还找不到就接着向上，一直找到全局作用域(window下)，还找不到就报错。
+*/    
+var a = 0;
+function fn(){
+    var b = 1;
+    console.log(a);
+    function fn2(){
+        var c;
+        console.log(b);
+        c = 2;
+        console.log(a,b,c);
+    }
+    fn2();
+}
+fn();
+</script>    
+</body>
+</html>

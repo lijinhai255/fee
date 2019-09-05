@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button>a</button> 
+<button>b</button> 
+<button>c</button> 
+<button>d</button>    
+<script>
+var arr = ["A","b","C","d","E"];
+/*
+    arr.filter(function(item,index){   //对数组进行过滤
+        return true 这一位 false 过滤掉这一位
+    })
+    filter 的返回值 是 一个过滤后的新数组
+*/  
+var arr2 = arr.filter(function(item,index){
+    //console.log(item,index);
+    // 过滤掉所有的小写位
+    // if(item == item.toUpperCase()){ // 大写
+    //     return true;
+    // } else {
+    //     return false;
+    // }
+    return item == item.toUpperCase()
+    
+    
+});
+console.log(arr2);
+</script>    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var arr = [1,2,3];//注意 对象类型中存储是一个数据的地址：北京市海淀致真大厦
+var arr2 = arr; // 对象赋值的过程中，也是把地址传了过去: 北京市海淀致真大厦
+arr[1] = "b";
+console.log(arr2); // 1, "b", 3
+
+var b = 0;
+var a = b;
+a = 1;
+console.log(b);
+
+/*
+    存值和存址
+    传值和传址
+
+    基本类型在赋值过程中，传递时具体的值
+
+    对象 在赋值的过程中，传递的是 在内存中的引用地址
+*/
+</script>    
+</body>
+</html>

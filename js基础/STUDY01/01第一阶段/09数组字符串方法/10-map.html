@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button>a</button> 
+<button>b</button> 
+<button>c</button> 
+<button>d</button>    
+<script>
+var arr = ["a","b","c","d","E"];
+/*
+    arr.map(function(item,index){   //根据 arr的每一位生成一个新数组
+        return 这一位要生成的新的值
+    })
+    map 的返回值 是 一个替换后的新数组
+*/  
+var arr2 = arr.map(function(item,index){
+    return item.toUpperCase();   
+});
+console.log(arr2);
+</script>    
+</body>
+</html>

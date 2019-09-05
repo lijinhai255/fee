@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 函数每次执行之间没有任何关系，函数执行一次就相对于在js中复制了一个新的函数
+// function fn(){
+//     var b = 0;
+//     function fn2(){
+//         b++;
+//         console.log(b);
+//     }
+//     fn2();//1
+//     fn2();//2
+//     fn2();//3
+// }
+// fn();
+
+// function fn(){
+//     var b = 0;
+//     function fn2(){
+//         b++;
+//         console.log(b);
+//     }
+//     fn2();
+//     fn2();
+//     fn2();
+// }
+// fn();
+
+function fn(){
+    var b = 0;
+    // 作用域  ！！！ 声明在那
+    return function(){
+        // 注意这里声明 在 fn 中，也就是 fn 的子函数，那它可以访问父级的作用域 也就 fn 的作用域
+        b++;
+        console.log(b);
+    };
+}
+var f = fn();
+f();
+f(); 
+// 注意 f 这会是 fn 的子函数 function(){b++; console.log(b); }
+//console.log(f);
+</script>    
+</body>
+</html>

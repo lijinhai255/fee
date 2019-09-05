@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="mydiv1">
+        <button style="background: red">按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <p style="display: block;">div1</p>
+        <p style="display: none;">div2</p>
+        <p style="display: none;">div3</p>
+    </div>
+    <div class="mydiv2">
+        <button style="background: red">按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <p style="display: block;">div1</p>
+        <p style="display: none;">div2</p>
+        <p style="display: none;">div3</p>
+    </div>
+    <button class="nextPre">点击我第一个选项卡下一页切换</button>
+</body>
+<script>
+    // 第三个需求 3-点击按钮第一个选项卡有下一页功能
+    function Tab(btns, ps, isNext = false) {
+        btns.forEach((v, k) => {
+            v.onclick = function () {
+                psFor(k);
+            }
+        })
+
+        if (isNext) {
+            // 有下一页功能；
+            let num = 0;
+            document.querySelector(".nextPre").onclick = function () {
+                num++;
+                num = num > 2 ? 0 : num
+                psFor(num);
+            }
+        }
+
+        function psFor(k) {
+            ps.forEach((value, key) => {
+                if (key == k) {
+                    // 选中项；
+                    btns[key].style.background = "red";
+                    ps[key].style.display = "block";
+                } else {
+                    // 非选中项；
+                    btns[key].style.background = "";
+                    ps[key].style.display = "none";
+                }
+            })
+        }
+    }
+
+    let btns = document.querySelectorAll(".mydiv1 button");
+    let ps = document.querySelectorAll(".mydiv1 p");
+    Tab(btns, ps, true);
+    let btns2 = document.querySelectorAll(".mydiv2 button");
+    let ps2 = document.querySelectorAll(".mydiv2 p");
+    Tab(btns2, ps2);
+
+
+
+
+</script>
+
+</html>

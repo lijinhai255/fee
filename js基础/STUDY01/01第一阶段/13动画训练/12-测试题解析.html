@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+以下代码执行后， arr 的值是：（）
+
+   ```
+*/    
+var arr=[{a:1},{}];
+   arr.forEach(function(item,idx){
+       /*
+       idx: 0 , {a:1,b:0}
+       idx: 1, {b:1}
+       */
+       item.b=idx;
+   });
+//  [{a:1,b:0},{b:1}]  
+</script>    
+</body>
+</html>

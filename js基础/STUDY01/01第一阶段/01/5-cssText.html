@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="width:200px;height:200px;background:blue"></div>
+<script>
+var box = document.querySelector("#box");
+//console.log(box.style.cssText);  // 操作style中的所有值
+//box.style.cssText = ""; // 清空 style 中的所有内容
+//box.style.cssText = "width:300px"; 如果直接对 cssText 赋值，会覆盖里边的所有内容
+
+// width:300px;height:200px;background:blue;
+
+box.style.cssText += "width:300px";
+</script>    
+</body>
+</html>

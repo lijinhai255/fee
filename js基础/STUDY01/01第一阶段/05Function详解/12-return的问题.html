@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    在 函数 中，return 之后代码就不在执行了
+*/    
+function fn(){
+    var a = 0;
+    return 1; // 终止函数继续向下执行
+    console.log(a);// 这一步为啥为啥不执行呢
+    var b = 2;
+    console.log(a + b);
+}    
+console.log(fn());// 都会打印什么内容，顺序是？
+// return; 注意 return 只能用在函数中
+</script>    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    全局作用域：
+        1. 声明在任何函数以外的变量或者函数体 - 全局变量(全局函数)
+        2. window(在浏览器 window 本身和作用域有合并) 的属性
+        3. 在浏览器中，默认不写 var,浏览器就会任务是要给 window 的属性
+    函数作用域：
+        1. 声明在函数内部的数据，作用范围只在函数内容 - 函数的局部变量
+        2. 变量、函数的参数、声明在函数内部函数
+
+    作用域链:
+        1. 作用域链：数据的一种查找规则
+        2. 当我们调用数据是，会在当前作用域进行查找,如果找不到就向上，查找父作用域，如果还找不到就继续向上，一直到全局作用域，还是找不到就报错。
+*/    
+// var a = 0;
+// function b(a,c){
+//     a1 = 10;
+//     console.log(a,c);
+// }
+// b();
+// console.log(window);
+var a = "a";
+function fn(a){
+    var b = 0;
+    function fn2(){
+        var a = 10;
+        console.log(a,b,"fn2");
+    }
+    fn2();
+    console.log(a,"fn");
+}
+fn(1);
+console.log(a,"window");
+</script>    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function Dad(){
+    this.name = "张三";
+}
+Dad.prototype.fn = function(){
+    console.log("fn....");
+}
+function Son(){
+    Dad.call(this);
+}
+let Link = function (){}
+Link.prototype = Dad.prototype;
+Son.prototype = new Link();
+Son.prototype.constructor = Son;
+
+let son  = new Son();
+son.fn();
+
+</script>
+</html>

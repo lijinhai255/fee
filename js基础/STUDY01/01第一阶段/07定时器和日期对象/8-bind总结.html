@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function fn(){
+    console.log(this,arguments);
+}    
+
+var fn2 = fn.bind(document.body);
+fn2();
+
+/*
+    fn.bind(指向,参数1,参数2,参数3) 调用函数的 bind 方法，会返回一个新函数,在新函数中 this 会绑定成 我们希望他指向的内容
+    指向: 新函数的 this 指向
+    剩余的参数,就是传入函数的实参(通常还是在调用函数时再传参)
+    bind 返回的新函数 this 指向，已经被绑定了，不能再次进行修改
+*/
+</script>    
+</body>
+</html>

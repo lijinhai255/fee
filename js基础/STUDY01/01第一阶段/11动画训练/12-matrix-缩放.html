@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            margin: 200px auto;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+// 每次点击时，让box在现有基础上，继续旋转 15deg
+(function(){
+    var box = document.querySelector("#box");
+    // matrix(1, 0, 0, 1, 0, 0);
+    var a = 1;
+    var b = 0;
+    var c = 0;
+    var d = 1;
+    var e = 0;
+    var f = 0;
+    // x 位移
+    function translateX(x){
+        e += x;
+        box.style.transform = 'matrix('+a+', '+b+', '+c+', '+d+', '+e+', '+f+')';
+    }
+    // y 位移
+    function translateY(y){
+        f += y;
+        box.style.transform = 'matrix('+a+', '+b+', '+c+', '+d+', '+e+', '+f+')';
+    }
+    // x 缩放
+    function scaleX(x){
+        a *= x;
+        c *= x;
+        e *= x;
+        box.style.transform = 'matrix('+a+', '+b+', '+c+', '+d+', '+e+', '+f+')';
+    }
+    // y 缩放
+    function scaleY(y){
+        b *= y;
+        d *= y;
+        f *= y;
+        box.style.transform = 'matrix('+a+', '+b+', '+c+', '+d+', '+e+', '+f+')';
+    }
+    box.onclick = function(){
+        scaleX(1.2);
+        scaleY(1.2)
+    };
+    
+
+
+})();
+</script>
+</body>
+</html>

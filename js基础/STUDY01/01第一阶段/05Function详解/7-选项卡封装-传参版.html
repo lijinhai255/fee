@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            background: red;
+        }
+        .inner div{
+            width: 300px;
+            height: 200px;
+            background: #000;
+            font: 50px/200px "宋体";
+            color: #fff;
+            display: none;
+        }
+        .inner .show {
+            display: block;
+        }
+        #wrap2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap" class="wrap">
+    <nav class="nav">
+        <button class="active">选项一</button>
+        <button>选项二</button>
+        <button>选项三</button>
+    </nav>
+    <div class="inner">
+        <div class="show">内容一</div>
+        <div>内容二</div>
+        <div>内容三</div>
+    </div>
+</div>   
+<div id="wrap2" class="wrap">
+    <nav class="nav">
+        <button class="active">选项一</button>
+        <button>选项二</button>
+        <button>选项三</button>
+    </nav>
+    <div class="inner">
+        <div class="show">内容一</div>
+        <div>内容二</div>
+        <div>内容三</div>
+    </div>
+</div> 
+<div id="wrap3" class="wrap">
+    <nav class="nav">
+        <button class="active">选项一</button>
+        <button>选项二</button>
+        <button>选项三</button>
+    </nav>
+    <div class="inner">
+        <div class="show">内容一</div>
+        <div>内容二</div>
+        <div>内容三</div>
+    </div>
+</div> 
+<script>    
+// 当有两段代码本身的功能及其相似，只有个别地方不一样，这时候，我们就可以考虑，把两段代码合并一个函数，然后把两段代码中不一致的内容，在通过传参传进去
+// var wrap = document.querySelector("#wrap");
+// tab(wrap);
+// var wrap2 = document.querySelector("#wrap2");
+// tab(wrap2);
+var wraps = document.querySelectorAll(".wrap");
+for(var i = 0; i < wraps.length; i++){
+    tab(wraps[i]);
+}
+function tab(wrap){
+    console.log(wrap);
+    var btns = wrap.querySelectorAll(".nav button");
+    var inners =  wrap.querySelectorAll(".inner div");
+    var now = 0;
+    for(var i = 0; i < btns.length; i++){
+        btns[i].index = i;
+        btns[i].onclick = function(){
+            btns[now].classList.remove("active");
+            inners[now].classList.remove("show");
+            this.classList.add("active");
+            inners[this.index].classList.add("show");
+            now = this.index;
+        };
+    }
+}
+</script>
+</body>
+</html>

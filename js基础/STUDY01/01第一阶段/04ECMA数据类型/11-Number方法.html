@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--
+Number(val) 将数据转换成数字
+- 字符串类型，使用 Number() 转换时，规则如下：
+    - 当整段字符串都复合数字规则时，转换为数字返回
+    - 空字符串,直接返回 0
+    - 其余情况，直接返回 NaN
+- 布尔值类型，使用 Number() 转换时，true 返回 1，false 返回 0
+- null，使用 Number() 转换时 返回 0
+- undefined，使用 Number() 转换时 返回 NaN
+- 对象类型，使用 Number() 转换时，调用的对象的toString()方法，然后再次依照前面字符串的转换规则进行转换
+-->
+<script>
+//var nub = 10;
+//console.log(Number(nub));// 如果数据类型是 number，原样返回
+
+/*
+   字符串类型，使用 Number() 转换时，规则如下：
+    - 当整段字符串都复合数字规则时，转换为数字返回
+    - 空字符串,直接返回 0
+    - 其余情况，直接返回 NaN 
+*/
+// var str = "10.01a";
+// console.log(Number(str));
+/*
+    布尔值类型，使用 Number() 转换时，true 返回 1，false 返回 0
+*/
+// var b = false;
+// console.log(Number(b));
+
+// console.log(Number(null)); //null，使用 Number() 转换时 返回 0
+
+// undefined，使用 Number() 转换时 返回 NaN
+// console.log(Number(undefined));
+
+var arr = [0];
+console.log(Number(arr));
+/*
+对象类型，使用 Number() 转换时，调用的对象的toString()方法，然后再次依照前面字符串的转换规则进行转换
+*/
+</script>
+</body>
+</html>

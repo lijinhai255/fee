@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 1px solid #333;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('mousedown',function(e){
+
+            let startPos = {
+                t:e.clientY,
+                l:e.clientX
+            }
+
+            // 创建div元素
+            let box = document.createElement('div');
+            box.classList.add('box');
+
+            
+            document.body.appendChild(box);
+
+            function move(e){
+                let dis = {
+                    l : Math.abs(e.clientX - startPos.l),
+                    t : Math.abs(e.clientY - startPos.t),
+                }
+
+                box.style.left = Math.min(startPos.l,e.clientX)+'px';
+                box.style.top = Math.min(startPos.t,e.clientY) +'px';
+                box.style.width = dis.l + 'px';
+                box.style.height = dis.t + 'px';
+            }
+
+            // 设置box的宽高
+            document.addEventListener('mousemove',move)
+            document.addEventListener('mouseup',function(){
+                document.removeEventListener('mousemove',move)
+            },{
+                once:true
+            })
+            
+        })
+    </script>
+</body>
+</html>

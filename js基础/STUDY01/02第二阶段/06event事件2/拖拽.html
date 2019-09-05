@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 60px;
+            height: 60px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+     <script>
+        let box = document.querySelector('#box');
+
+        // mousedown、mousemove、mouseup
+        box.addEventListener('mousedown',function(e){
+            // 记录当前鼠标按下的坐标
+            // console.log(e.clientX,e.clientY);
+            let startX = e.clientX;
+            let startY = e.clientY;
+
+            // 记录原来left和top值
+            let l = box.offsetLeft;
+            let t = box.offsetTop ;
+
+            document.addEventListener('mousemove',moveFn)
+
+            function moveFn(e){
+                let nowX = e.clientX;
+                let nowY = e.clientY;
+
+                // 计算 鼠标移动的距离
+                // 当前位置 - 起始位置  = 移动的距离
+                let disX = nowX - startX;
+                let disY = nowY - startY;
+
+                // console.log(disX,disY)
+
+                box.style.left = disX + l + 'px';
+                box.style.top = disY + t + 'px';
+            }
+
+            // 在鼠标抬起时 将鼠标移动事件清除
+            document.addEventListener('mouseup',function(){
+                document.removeEventListener('mousemove',moveFn);
+                console.log(1);
+            })
+            
+        })
+        // 小任务： 将这个div的拖拽范围限制在 可视区范围内
+     </script>
+</body>
+</html>

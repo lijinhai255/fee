@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var arr = [1,2,3];
+arr.push("a","b");
+arr.unshift("c","d");
+console.log(arr);
+/*
+    push 数组末尾添加 返回数组的新长度
+    pop 数组末尾删除一位  返回删除的这一位数据
+    unshift 数组头部添加 返回数组的新长度
+    shift 数组头部删除一位 返回删除的这一位数据
+*/
+console.log(arr.pop()); //从数组的尾部删除一位
+console.log(arr);
+arr.shift(); //从数组的头部删除一位
+console.log(arr);
+</script>    
+</body>
+</html>

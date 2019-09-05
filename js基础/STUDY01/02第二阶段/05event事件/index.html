@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li><a href="/index">首页</a></li>
+        <li><a href="/about">关于我们</a></li>
+        <li><a href="/lesson">课程介绍</a></li>
+    </ul>
+
+    <div id="view">
+        
+    </div>
+
+    <script>
+        // history 历史记录
+
+        // 给所有的a都加 点击事件
+
+        // 静态路由 history 其实 不是跳转页面~！
+        // 必须实在服务器环境下才能实现
+        // histroy 路由 必须与后端配合 - 判断当前路径是否真实存在 
+
+        let btns = document.querySelectorAll('ul a');
+        let view = document.querySelector('#view');
+
+        btns.forEach((item,index)=>{
+            item.onclick = function(){
+                console.log(item.href);
+
+                // 切换对应模板 - 条件 history的值
+                //  设置history的值
+                // 第一个参数 可以为一个对象{ name:val}
+                // 第二个参数 title
+                // 第三个参数 history状态值
+                history.pushState({
+                    info:index
+                },'',item.href)
+
+
+                matching()
+
+                // 阻止a标签默认功能 - 跳转页面
+                return false;
+            }
+        })
+
+        matching()
+
+        function matching(){
+             //history改变后的值
+             console.log(location.pathname);
+
+            let path = location.pathname;
+
+            switch(path){
+                case '/index':
+                case '/index.html' :
+                view.innerHTML = indexR();
+                break;
+                case '/about':
+                view.innerHTML = aboutR();
+                break;
+                case '/lesson':
+                view.innerHTML = lessonR();
+                break;
+            }
+        }
+
+
+        // 历史记录上下切换事件 - 浏览器上 前进后退按钮
+        window.onpopstate = function(){
+            // console.log(1);
+
+            // 获取history传递过来的值
+            console.log(history.state)
+
+            matching()
+        }
+
+
+        function indexR(){
+            return `
+                <h3>这是首页</h3>
+            `
+        }
+
+        function aboutR(){
+            return `
+                <h3>这是关于我们</h3>
+                <P>精品课程，全新升级
+系统化名师授课，前沿性方法教学，班级化学员管理，实战性成果校验</P>
+            `
+        }
+        
+
+        function lessonR(){
+            return `
+                <h3>这是课程介绍</h3>
+                <p>JavaEE 企业级分布式高级架构师
+
+教研团队与一线企业技术leader深度合作，以企业所需，重新定义Java进阶课程</p>
+            `
+        }
+        
+        
+
+
+
+    </script>
+</body>
+</html>

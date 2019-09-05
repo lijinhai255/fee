@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top:200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+
+        let box = document.querySelector('.box');
+
+        document.addEventListener('keydown',function(e){
+            // e  keyCode 获取键码 
+            // console.log(e.keyCode)
+            // 控制div方向移动 四个方向 控制 
+            // 八个方向控制
+            // 37 左
+            // 38 上
+            // 39 右
+            // 40 下
+            console.log(e.keyCode);
+            
+            let code = e.keyCode;
+            switch(code){
+                case 37:
+                    box.style.left = parseInt(getComputedStyle(box)['left'])-10+'px';
+                break;
+                case 38:
+                    box.style.top = parseInt(getComputedStyle(box)['top'])-10+'px';
+                break;
+                case 39:
+                    box.style.left = parseInt(getComputedStyle(box)['left'])+10+'px';
+                break;
+                case 40:
+                    box.style.top = parseInt(getComputedStyle(box)['top'])+10+'px';
+
+            }
+
+        })
+    </script>
+</body>
+</html>

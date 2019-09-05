@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var arr = [1,2,3,4,5];
+// var sum = arr.reduce(function(n1,n2){
+//     console.log(n1,n2);
+//     return n1 + n2;
+// });
+/*
+    reduce:
+        第0次执行：默认传入 n1:第 0 位 n2:第 1 位
+        第1次执行：传入 n1: 第0次执行的返回值 n2：第 2 位
+        第2次执行：传入 n1: 第1次执行的返回值 n2：第 3 位
+        ……
+    最终 reduce 返回值 是 最后一次的返回值
+*/
+
+// 用 100 减去数组的每一位
+var sum = arr.reduce(function(n1,n2){
+    console.log(n1,n2);
+    return n1 - n2;
+},100);
+console.log(sum);
+/*
+    reduce:
+        第0次执行：n1: 100 n2:第 0 位
+        第1次执行：传入 n1: 第0次执行的返回值 n2：第 1 位
+        第2次执行：传入 n1: 第1次执行的返回值 n2：第 2 位
+        ……
+    最终 reduce 返回值 是 最后一次的返回值
+*/
+//console.log(sum);
+var max = arr.reduce(function(n1,n2){
+    return n1 > n2?n1:n2;
+});    
+console.log(max);
+</script>    
+</body>
+</html>

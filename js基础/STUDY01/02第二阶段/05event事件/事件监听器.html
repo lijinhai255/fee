@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        let box = document.querySelector('#box');
+
+        //绑定一个事件
+        // box.onclick=function(){
+        //     this.style.background = 'blue';
+        // }
+
+        // box.onclick=function(){
+        //     alert(1);
+        // }
+
+        // 给box添加事件监听 - 同一个事件同时监听多个函数
+        box.addEventListener('click',function(){
+            this.style.background = 'blue';
+        })
+
+        box.addEventListener('click',function(){
+            alert(1);
+        })
+
+        // attchEvent IE用的
+
+
+    </script>
+</body>
+</html>

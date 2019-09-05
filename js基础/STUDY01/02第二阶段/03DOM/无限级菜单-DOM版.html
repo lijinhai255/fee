@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="data.js"></script>
+    <style>
+        li ul {
+            display: none;
+        }
+        li .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="list">
+    <!-- <ul>
+        <li>
+            <p>第一级菜单</p>
+            <ul>
+                <li>
+                    <p>第二级菜单</p>
+                    <ul>
+                        <li>
+                            <p>第三级菜单</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>     -->
+</div>
+<script>
+{
+    let list = document.querySelector("#list");
+    
+    let topPid = -1;
+
+    // 根据 Pid 找到对应子级
+    function getChild(id){
+        return data.filter(item=>item.pid ==id);
+    }
+
+    list.appendChild(renderList(topPid));
+    // 渲染整个列表结构
+    function renderList(pid){
+        let child = getChild(pid);
+        let ul = document.createElement("ul");
+        child.forEach(item=>{
+            let li = document.createElement("li");
+            let p = document.createElement("p");
+            p.innerHTML = item.title;
+            p.onclick = function(){
+                // 如果有下一个兄弟标签，就需要执行菜单的展开/收缩
+                let nextList = this.nextElementSibling;
+                //console.dir(nextList.classList);
+                if(nextList){
+                    // 1. 当前是展开状态，点击之后就收缩起来
+                    if(nextList.classList.contains("show")){
+                        nextList.classList.remove("show");
+                    } else {
+                        // 当前是收缩状态，就把所有的同级收缩起来，然后展开当前的
+                        let lists = nextList.parentNode.parentNode.querySelectorAll("ul");
+                        lists.forEach(item=>{
+                            item.classList.remove("show");
+                        });
+                        nextList.classList.add("show");
+                    }
+                }
+            };
+            li.appendChild(p);
+            if(getChild(item.id).length > 0){
+                li.appendChild(renderList(item.id));
+            }
+            ul.appendChild(li);
+        });
+        return ul;
+    }
+}    
+</script>
+
+</body>
+</html>

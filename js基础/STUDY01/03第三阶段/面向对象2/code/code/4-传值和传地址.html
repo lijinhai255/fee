@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 简单数据类型 是传值Number、String、Boolean、Null、Undefined ；  复杂是传址Array、Date、Math、RegExp、Object、Function等；
+
+let myproto = {
+    name:"张三",
+    age:20,
+    test:undefined,
+    arr:[1,3],
+    fn:function(){
+        console.log("fn...")
+    },
+    obj:{
+       height:"178cm" 
+    },
+    test2:null
+}
+// 深拷贝
+// let sonProto = JSON.parse(JSON.stringify(myproto));
+let sonProto = deepCopy(myproto);
+sonProto.name = "李四";
+console.log(myproto,sonProto);
+
+// 深拷贝函数；
+function deepCopy(obj){
+    let newObj = Array.isArray(obj)?[]:{};
+    //循环原型上的东西；
+    for(let i in obj){
+        if(obj.hasOwnProperty(i)){
+            if(typeof obj[i] == "object"){
+                newObj[i] =  deepCopy(obj[i]);
+            }else{
+                newObj[i] = obj[i];
+            }
+        }
+    }
+    return newObj;
+}
+
+// let obj = {
+//     name:"张三"
+// }
+// obj.__proto__.age = 20;
+// for(let i in obj){
+//     console.log(obj[i]);
+// }
+
+
+</script>
+</html>

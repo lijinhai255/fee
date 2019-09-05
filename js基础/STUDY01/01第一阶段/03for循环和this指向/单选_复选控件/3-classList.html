@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <link rel="stylesheet" href="./checkbox.css" />
+    <style>
+      h3{
+        margin: 0;
+        color: #e15671;
+        position: absolute;
+        left: 50%;
+        top: 130px;
+        z-index: 9;
+      }
+      .option{
+        background: url(./images/checkboxbg.png) no-repeat 0 -260px;
+      }
+    </style>
+    </head>
+<body>
+  <div class="box">
+      <h3>模拟复选</h3>
+    <div class="option">
+      <a href="javascript:;" class="option-item option-item-1">美食</a>
+      <a href="javascript:;" class="option-item option-item-2">逛街</a>
+      <a href="javascript:;" class="option-item option-item-3">旅游</a>
+    </div>
+  </div>
+</body>
+<script>
+var options = document.querySelectorAll(".option a");
+for(var i = 0; i < options.length;i++){ 
+    options[i].onclick = function(){
+        this.classList.toggle("checked");
+    };
+}
+/* 
+   el.classList 获取设置 元素的 class 列表 (类数组)
+    - 通过下标获取到元素的每一个class
+    - length 元素的 class 个数
+    - value 存储 完整 class  
+    - add("class名字") 给元素classList 添加一个class
+    - remove("class名字") 从元素的 classList 删除一项
+    - contains("class名字") 判断元素的classList 是否包含这个 class ，包含返回 true 否则 返回 false
+    - toggle("class名字") 切换class，如果元素有这个 class 我们就删掉，否则给给加上个 class
+
+*/
+</script>  
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 假如 三个数据请求 请求3 依赖请求2 请求2 依赖请求1
+
+       async function fn(){
+            await new Promise((resolve,reject)=>{
+                // 请求3
+                setTimeout(()=>{
+                    console.log('请求三')
+                    resolve()
+                },1000)
+            })
+
+            await new Promise((resolve,reject)=>{
+                // 请求2
+                setTimeout(()=>{
+                    console.log('请求二')
+                    resolve()
+                },1000)
+            })
+
+            
+            await new Promise((resolve,reject)=>{
+                // 请求1
+                setTimeout(()=>{
+                    console.log('请求一')
+                    resolve()
+                },1000)
+            })
+        }
+
+        fn()
+
+    </script>
+</body>
+</html>

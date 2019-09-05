@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="mydiv1">
+        <button style="background: red">按钮一</button>
+        <button>按钮二</button>
+        <p style="display: block;">div1</p>
+        <p style="display: none;">div2</p>
+    </div>
+    <div class="mydiv2">
+        <button style="background: red">按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <button>按钮四</button>
+        <button>按钮五</button>
+        <p style="display: block;">div1</p>
+        <p style="display: none;">div2</p>
+        <p style="display: none;">div3</p>
+        <p style="display: none;">div4</p>
+        <p style="display: none;">div5</p>
+    </div>
+    <button class="nextPre">点击我第一个选项卡下一页切换</button>
+    <button class="autoPlay">点击按钮第二个选项卡有自动轮播功能</button>
+</body>
+<script>
+    // 第四个需求 4-点击按钮第二个选项卡有自动轮播功能
+    // 共性特征  放函数里面（类） 少数（传参数配置）个别（返还单独处理）
+    function Tab(btns, ps) {
+        let obj = {};
+        btns.forEach((v, k) => {
+            v.onclick = function () {
+                psFor(k);
+            }
+        })
+
+        // if (isNext) {
+        //     // 有下一页功能；
+        //     let num = 0;
+        //     document.querySelector(".nextPre").onclick = function () {
+        //         num++;
+        //         num = num > 2 ? 0 : num
+        //         psFor(num);
+        //     }
+        // }
+
+        // if (isAutoPlay) {
+        //     // 控制自动轮播
+        //     let num = 0;
+        //     document.querySelector(".autoPlay").onclick = function () {
+        //         setInterval(() => {
+        //             num++;
+        //             num = num > 2 ? 0 : num
+        //             psFor(num);
+        //         }, 1000);
+        //     }
+        // }
+
+        function psFor(k) {
+            ps.forEach((value, key) => {
+                if (key == k) {
+                    // 选中项；
+                    btns[key].style.background = "red";
+                    ps[key].style.display = "block";
+                } else {
+                    // 非选中项；
+                    btns[key].style.background = "";
+                    ps[key].style.display = "none";
+                }
+            })
+        }
+        obj.psFor = psFor;
+        obj.TabNum = btns.length;
+        return  obj;
+    }
+
+    let btns = document.querySelectorAll(".mydiv1 button");
+    let ps = document.querySelectorAll(".mydiv1 p");
+    // 下一页功能 轮播功能； 一个需求；
+    let tab1 = Tab(btns, ps);
+    // 下一页功能 
+    let num = 0;
+    document.querySelector(".nextPre").onclick = function () {
+        num++;
+        num = num > tab1.TabNum-1 ? 0 : num
+        tab1.psFor(num);
+    }
+
+
+    let btns2 = document.querySelectorAll(".mydiv2 button");
+    let ps2 = document.querySelectorAll(".mydiv2 p");
+    let tab2 = Tab(btns2, ps2);
+    // 自动轮播
+    let num2 = 0;
+    document.querySelector(".autoPlay").onclick = function () {
+        setInterval(() => {
+            num2++;
+            num2 = num2 > tab2.TabNum-1 ? 0 : num2
+            tab2.psFor(num2);
+        }, 1000);
+    }
+
+
+
+</script>
+
+</html>

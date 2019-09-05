@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 理解成类；ES5;
+// function Person(name){
+//     this.name = name;
+//     this.age = 20;
+// }
+// Person.prototype.fn = function(){
+//     console.log("fn....");
+// }
+// Person.prototype.constructor === Person
+
+// ES6;
+// 静态属性和方法；
+class Person{
+    static height = "178cm";
+    constructor(name){
+        this.name = name;
+        this.age = 20;
+    }
+    fn(){
+        console.log("fn...")
+    }
+    static myfn(){
+        console.log("myfn...");
+    }
+    getName(){
+        console.log(this.name);
+    }
+    setStyle(){
+        console.log("setStyle....");
+    }
+}
+Person.num = 10;
+Person.hobby = function(){
+    console.log("hobby...");
+}
+
+// console.log(typeof Person);
+// console.log(Person.height);
+// Person.myfn();
+// let p1 = new Person("张三");
+// console.log(p1.height);
+// p1.fn();
+// p1.getName();
+
+class Son extends Person{
+    constructor(name){
+        super(name);  //父类的构造函数；
+        this.sex = "男"
+    }
+    action(){
+        console.log("action...");
+    }
+    setStyle(){
+        super.setStyle();
+        console.log("子类的setStyle....");
+    }
+}
+// 类会继承静态属性和方法；
+Son.myfn();
+
+let newSon = new Son("张四");
+// newSon.action();
+// newSon.fn();
+newSon.setStyle();
+// newSon.myfn(); //实例化对象不会继承父类静态方法；
+// console.log(newSon.height);
+
+
+
+
+
+
+
+
+
+</script>
+</html>

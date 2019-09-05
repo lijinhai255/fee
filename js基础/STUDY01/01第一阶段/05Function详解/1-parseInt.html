@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// parseInt(data,基数)
+/*
+   data: 要转成数字的字符串，如果 data 不是一个字符串类型，会先转换成字符串之后再来转换
+   基数：标明了 string 中存储数字 是几进制 (2 - 36) 
+*/    
+// 0xf --> 15
+//console.log(0xf);
+// console.log(parseInt(0xf,10));// 15
+// console.log(parseInt(0xf,16));// 21
+// console.log(String(0xf)); -- > 15
+// 0 - 9 a - f // f 在十六进制中 代表 15
+console.log(parseInt("15",16)); // 15
+</script>    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve,reject)=>{
+            reject('123')
+        })
+
+        p.then(()=>{
+
+        },()=>{
+            console.log('失败1')
+        }).then((msg)=>{
+            console.log('成功了',msg)
+        },()=>{
+            console.log('失败2')
+        })   
+
+        // then的返回值 会有几个不同的状态  
+        // 1. then 没有返回值 就会默认返回一个promise为resolve的实例 
+        // 2. then 有返回值，但它的返回值不是promise 那他会给一个 promise为resolve的实例 并且会将返回值传给下一个then
+        // 3. then 返回的是一个自定义promise，它会根据你最终的状态决定走哪个函数
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+    #box {
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+</style>
+</head>
+<body>
+<button id="btn" onclick="document.getElementById('box').style.width = '200px';">大</button>    
+<div id="box"></div>    
+<script>
+/*
+    btn 点击的时候，修改 box 的大小
+*/
+
+// alert("这是弹出内容");//在页面弹出一个弹窗 弹出框
+// console.log("打印信息"); //在控制台打印消息
+/*
+    多行注释
+*/
+// document.getElementById("id名字") 在文档中通过id 来获取一个元素
+//console.log(document.getElementById("box")); 
+//console.log(document);
+// JS 本身强制大小写
+//document.getElementById("box").style.width = "200px";
+
+// . 属性，操作元素的属性
+// = 在 JS 中的作用是赋值: 把 = 右边的值，赋给左边
+// !!! style 修改的是行间样式
+
+// onclick 当点击的时候
+</script>
+</body>
+</html>

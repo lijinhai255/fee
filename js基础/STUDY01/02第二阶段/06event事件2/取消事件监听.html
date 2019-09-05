@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="height: 600px;">
+    <input type="button" value="取消body事件" />
+    <script>
+        let btn = document.querySelector('input');
+        btn.addEventListener('click',function(){
+            // 事件名
+            // 事件函数（必须得是命名函数才能解绑定！）
+            document.removeEventListener('click',clickFn)
+        })
+
+        document.addEventListener('click',clickFn)
+
+        function clickFn(){
+            document.body.style.background = 'red';
+            console.log('123')
+        }
+
+
+
+    </script>
+</body>
+</html>

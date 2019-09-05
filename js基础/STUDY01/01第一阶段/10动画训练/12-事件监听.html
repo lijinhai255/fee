@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">显示</button>    
+<div id="box"></div>  
+<script>
+/*
+事件监听基本用法    
+    box.addEventListener('事件名(不加on)',fn);
+取消事件监听
+    box.removeEventListener('事件名(不加on)',fn); 如果要取消不能使用您们函数
+*/    
+box.addEventListener("click",fn);
+box.addEventListener("click",function(){
+    console.log(11);
+});
+function fn(){
+    var w = parseInt(getComputedStyle(box)["width"]);
+    this.style.width = w + 100 + "px";
+   // box.removeEventListener("click",fn);
+}
+</script>  
+</body>
+</html>

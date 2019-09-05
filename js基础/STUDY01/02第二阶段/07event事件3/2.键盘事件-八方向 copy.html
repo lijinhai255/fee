@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top:200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+         let box = document.querySelector('.box');
+        // 同时有俩个按钮被按下 
+        // 给每一个方向 都设置一个开关 - 通过键盘控制开关 - 保持现有的运动情况是实时监控的
+
+        let onOff = {
+            toL:false,
+            toT:false,
+            toR:false,
+            toB:false,
+        }
+
+        // 定时器
+        setInterval(function(){
+
+            if(onOff.toL){
+                box.style.left  = parseInt(getComputedStyle(box)['left'])-10+'px';
+            }
+
+            if(onOff.toT){
+                box.style.top  = parseInt(getComputedStyle(box)['top'])-10+'px';
+            }
+
+            if(onOff.toR){
+                box.style.left  = parseInt(getComputedStyle(box)['left'])+10+'px';
+            }
+
+            if(onOff.toB){
+                box.style.top  = parseInt(getComputedStyle(box)['top'])+10+'px';
+            }
+
+        },30)
+
+        document.addEventListener('keydown',function(e){
+            //    console.log(e.keyCode)
+            let code = e.keyCode;
+            switch(code){
+                case 37:
+                    onOff.toL = true;
+                break;
+                case 38:
+                    onOff.toT = true;
+                break;
+                case 39:
+                    onOff.toR= true;
+                break;
+                case 40:
+                    onOff.toB = true;
+                break;
+            }
+        })
+
+
+        document.addEventListener('keyup',function(e){
+            //    console.log(e.keyCode)
+            let code = e.keyCode;
+            switch(code){
+                case 37:
+                    onOff.toL = false;
+                break;
+                case 38:
+                    onOff.toT = false;
+                break;
+                case 39:
+                    onOff.toR= false;
+                break;
+                case 40:
+                    onOff.toB = false;
+                break;
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function fn(){
+    console.log(this,arguments);
+}    
+//fn.call(0,"a","b");
+// fn.apply(0,["a","b"]);
+var fn2 = fn.bind(1);
+/*
+    this
+        - 函数内
+            - 作为对象属性(方法、事件): 指向当前对象
+            - this --> window
+        - 函数外
+            this --> window
+        - 严格模式下
+            函数中的 this 默认是 undefined
+
+    call 和 apply: 函数调用时 修改 this 指向        
+
+    bind 调用bind会返回一个新函数，这个新函数中的this，就指向我们要绑定的对象
+
+    setTimeout 延迟型定时器 和 setInterval 间隔型定时器 
+        返回值： 定时器编号
+    clearTimeout(定时器编号) 和 clearInterval(定时器编号)
+
+    定时器管理：
+        1. 每次开启定时器之前，都先关闭，确保只有一个定时器在执行
+        2. 开启定时器之前，判断原来的定时器，是否执行完，如果执行完再开启新的，否则不开启
+*/
+</script>    
+</body>
+</html>

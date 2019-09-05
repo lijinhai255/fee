@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<button id="run">跑</button>
+<button id="stop">停</button>    
+<div id="box"></div>
+<script>
+(function(){
+    var run = document.querySelector("#run");
+    var stop = document.querySelector("#stop");
+    var box = document.querySelector("#box");
+    var x = 0;
+    var speed = 5;
+    var timer = 0;
+    run.onclick = function(){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            /// var l = parseFloat(getComputedStyle(box)["left"]);
+            //box.style.left = l + 1 + "px";
+            x += speed;
+            box.style.transform = 'translateX('+x+'px)';
+        },20);
+    };
+    stop.onclick = function(){
+        clearInterval(timer);
+    };
+
+})();    
+</script>    
+</body>
+</html>

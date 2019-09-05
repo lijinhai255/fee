@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="mydiv1">
+        <button style="background: red">按钮一</button>
+        <button>按钮二</button>
+        <p style="display: block;">div1</p>
+        <p style="display: none;">div2</p>
+    </div>
+    <div class="mydiv2">
+        <button style="background: red">按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <button>按钮四</button>
+        <button>按钮五</button>
+        <p style="display: block;">div1</p>
+        <p style="display: none;">div2</p>
+        <p style="display: none;">div3</p>
+        <p style="display: none;">div4</p>
+        <p style="display: none;">div5</p>
+    </div>
+    <button class="nextPre">点击我第一个选项卡下一页切换</button>
+    <button class="autoPlay">点击按钮第二个选项卡有自动轮播功能</button>
+</body>
+<script>
+    // 工厂模式
+    // function Tab(){
+    //     let obj = {};
+    //     obj.name = "张三";
+    //     obj.hobby = function(){
+    //         console.log("喜欢篮球");
+    //     }
+    //     return obj;
+    // }
+    // let tab1 = Tab();
+    // let tab2 = Tab();
+    // console.log(tab1.hobby===tab2.hobby);
+    // 1.写法简单写；2.性能会更好；
+    // 构造函数
+    function Tab() {
+        this.name = "张三";
+        // this.hobby = function () {
+        //     console.log("喜欢篮球");
+        // }
+    }
+    // console.dir(Tab)
+    // 提供公共空间；原型；
+    Tab.prototype.hobby = function(){
+        console.log("喜欢篮球");
+    }
+    // 原型会有一个预定义属性；constructor指向构造函数；
+//    console.log(Tab.prototype.constructor === Tab);
+    // Tab.prototype = {
+    //     constructor:Tab,
+    //     hobby(){
+    //         console.log("喜欢篮球");
+    //     }
+    // }
+
+    let tab1 = new Tab();
+    // console.log(tab1.__proto__===Tab.prototype)
+    let tab2 = new Tab();
+    // 对象比较：1 值一样；2地址一样；
+    // console.log(tab1.hobby===tab2.hobby);
+    // console.log(tab1.name===tab2.name);
+    // let obj = {
+    //     name:"张三"
+    // }
+    // let obj1 ={
+    //     name:"张三"
+    // };
+    // let a = 10;
+    // let b = a;
+
+    // let obj = new Object();
+    // let obj = Object.create({
+    //     name:"张三",
+    //     age:20
+    // })
+    // console.log(obj)
+
+
+</script>
+
+</html>

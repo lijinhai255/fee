@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        .wrap{
+            width: 1000px;
+            height: 800px;
+            background: url(img/bg.jpg) no-repeat;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -500px;
+            margin-top: -400px;
+        }
+        #prev,#next{
+            position: absolute;
+            width: 25px;
+            height: 45px;
+            background: url(img/ar.png) no-repeat;
+            
+            top: 155px;
+        }
+        #prev{
+            left: 13px;
+        }
+        #next{
+            transform: rotate(180deg);
+            right: 13px;
+        }
+        .pic{
+            width: 536px;
+            height: 356px;
+            position: absolute;
+            top: 170px;
+            left: 297px;
+        }
+        #img{
+            vertical-align: top;
+            width: 536px;
+            height: 356px;
+        }
+        #txt{
+            width: 536px;
+            height: 71px;
+            position: absolute;
+            left: 297px;
+            bottom: 185px;
+            text-align: center;
+            font: 20px/71px "微软雅黑";
+            color: #666;
+        }
+        #navs {
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+        }
+        #navs a {
+            margin: 0 3px;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+        }
+        #navs img {
+            position: absolute;
+            left: -17px;
+            top: -35px;
+            width: 40px;
+            display: none;
+            border: 2px solid #fff;
+        }
+        #navs .active {
+            background: #f60;
+        }
+    </style>
+</head>
+<body>
+   <div class="wrap">
+       <div class="pic">
+            <a id="prev" href="javascript:;"></a>
+            <img id="img" src="img/img1.jpg" alt="">
+            <a id="next" href="javascript:;"></a>
+            <nav id="navs">
+                <a class="active">
+                    <img class="img" src="img/img1.jpg" alt="">
+                </a>
+                <a>
+                    <img class="img" src="img/img2.jpg" alt="">
+                </a>
+                <a>
+                    <img class="img" src="img/img3.jpg" alt="">
+                </a>
+                <a>
+                    <img class="img" src="img/img4.jpg" alt="">
+                </a>
+                <a>
+                    <img class="img" src="img/img5.jpg" alt="">
+                </a>
+            </nav>
+       </div>
+       <p id="txt">这是程序员的春天-1</p>
+   </div>
+<script>
+var img = document.querySelector("#img");
+var prev = document.querySelector("#prev");
+var next = document.querySelector("#next");
+var txt = document.querySelector("#txt");
+var navs = document.querySelectorAll("#navs a");
+var nub = 0;
+var data = [
+    "img/img1.jpg",
+    "img/img2.jpg",
+    "img/img3.jpg",
+    "img/img4.jpg",
+    "img/img5.jpg"
+];
+var text = [
+    "这是程序员的春天-1",
+    "这是程序员的秋天-2",
+    "随便来点啥呗-3",
+    "随便来点啥呗-4",
+    "随便来点啥呗-5"
+]
+// 获取数组最后一位，数组从0开始计数，所以最后一位就是 length - 1
+// console.log(data.length - 1);
+next.onclick = function(){
+    nub++;
+    //  nub = nub>数组的最后一位?0:nub;
+    nub = nub>data.length - 1?0:nub;
+    img.src = data[nub];
+    txt.innerHTML = text[nub];
+    // 不管之前有没有选中吗，我们先把他全部清除了
+    for(var i = 0; i < navs.length; i++){
+        navs[i].className = "";
+    }
+    // 给当前个对应的小点 加上 class
+    navs[nub].className = "active";
+};
+prev.onclick = function(){
+    nub--;
+    // nub = nub < 0?数组的最后一位:nub;
+    nub = nub<0?data.length - 1:nub;
+    img.src = data[nub];
+    txt.innerHTML = text[nub];
+    for(var i = 0; i < navs.length; i++){
+        navs[i].className = "";
+    }
+    navs[nub].className = "active";
+};
+</script>
+</body>
+</html>

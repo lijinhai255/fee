@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve,reject)=>{
+
+            // 请求一张图片
+            let img = new Image();
+            img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564676679229&di=189f903018a2854e74fbac3834f55d4e&imgtype=0&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Ff54083119edfb83c4cfe9ce2eeebc076.jpeg';
+
+            
+            img.onload=function(){
+                resolve('成功了')
+            }
+
+            img.onerror=function(){
+                reject('失败了')
+            }
+
+        })
+
+        p.then((info)=>{
+            console.log('图片'+info)
+        },(msg)=>{
+            console.log('图片'+msg)
+        })
+        
+    </script>
+</body>
+</html>

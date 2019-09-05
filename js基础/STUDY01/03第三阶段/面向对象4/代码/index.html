@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./jquery-3.4.1.js" type="text/javascript"></script>
+    <title>Document</title>
+    <style>
+        .mydiv1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .mydiv2 {
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mydiv1">
+
+    </div>
+    <div class="mydiv2">
+
+    </div>
+
+</body>
+<script>
+    // 链式操作；
+    // new Promise().then().then()
+    // $("div").
+    // .eq(0).click(function () {
+    //     console.log(1111);
+    // })
+//   console.log($("div"))
+//   $(function(){
+//     console.log(111);
+// })
+// $(document.querySelectorAll("div")).click(function(){
+//     console.log(111);
+// })
+
+// $("div").on("mouseover     mousedown",function(){
+//     console.log(1111);
+// });
+// let res = $("div").eq(0).end();
+// console.log(res);
+// 第一种
+//   let res =   $("div").css("background");
+//   console.log(res);
+// 第二种
+// $("div").css("background","black");
+// 第三种
+// $("div").css({background:"black",height:"200px"});
+// 开闭原则（扩展开放，修改关闭）
+// $.cssNumber.pm = true;
+// console.log($.cssNumber)
+$.cssHooks['wh'] = {
+    get(ele){
+        console.log("get..")
+        return "获取数据";
+    },
+    set(element,value){
+        console.log("set..")
+        ele.style['width'] = value;
+        ele.style['height'] = value;
+    }
+}
+
+// $("div").css("width","200px")
+let res = $("div").css("wh","300px");
+console.log(res);
+
+</script>
+
+</html>

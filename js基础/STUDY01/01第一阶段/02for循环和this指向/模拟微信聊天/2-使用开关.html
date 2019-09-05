@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        img{
+            vertical-align: top;
+        }
+        .wrap{
+            width: 1000px;
+            height: 800px;
+            background: url(img/bg.jpg) no-repeat;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -400px;
+            margin-left: -500px;
+        }
+        .iphone{
+            width: 356px;
+            height: 679px;
+            background: url(img/iphone.png) no-repeat;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -178px;
+            margin-top: -338.5px;
+        }
+        .list{
+            width: 318px;
+            height: 498px;
+            margin: 47px 0 0 19px;
+            padding: 20px;
+            overflow: auto;
+            box-sizing: border-box;
+
+        }
+        .list li::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .list img{
+            width: 35px;
+            height: 40px;
+        }
+        .list p{
+            width: 230px;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .nav{
+            height: 60px;
+            background: #e5e5e5;
+            width: 318px;
+            margin-left:19px; 
+        }
+        .nav::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .nav img{
+            padding: 10px 0 0 16px;
+            float: left;
+        }
+        .nav input{
+            float: left;
+            width: 190px;
+            height: 40px;
+            border: none;
+            background: #fff;
+            border-radius: 10px;
+            margin: 11px 0 0 13px;
+        }
+        .nav button{
+            width: 64px;
+            height: 40px;
+            font: 16px / 40px "微软雅黑";
+            color: #e15671;
+            margin-top: 11px;
+            text-align: center;
+            border: none;
+            background: none;
+        }
+        .right,.left{
+            margin-bottom: 20px;
+        }
+        .right img{
+            float: right;
+        }
+        .right p{
+            float: right;
+            background: #bab3ce;
+            color: #fff;
+            margin-right: 13px;
+        }
+        .left img{
+            float: left;
+        }
+        .left p{
+            float: left;
+            background: #e5e5e5;
+            margin-left: 13px;
+        }
+            
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="iphone">
+        <ul class="list">
+            <li class="right">
+                <img src="img/monster2.png" alt="">
+                <p>说：哈？好呀，多少钱我都愿意～～呵呵</p>
+            </li>
+            <li class="left">
+                <img src="img/monster.png" alt="">
+                <p>说：这个简单，我们去妙味远程课堂学就行啦～～～</p>
+            </li>
+            <li class="right">
+                <img src="img/monster2.png" alt="">
+                <p>说：好呀～～～你先帮我学会JS再说～～</p>
+            </li>
+            <li class="left">
+                <img src="img/monster.png" alt="">
+                <p>说：咦？土豪？？</p>
+            </li>
+            <li class="right">
+                <img src="img/monster2.png" alt="">
+                <p>说：大家好，我是土豪～</p>
+            </li>
+        </ul>
+        <div class="nav">
+            <img id="icon" src="img/monster.png" alt="">
+            <input type="text">
+            <button>发送</button>
+        </div>
+    </div>
+</div>
+<script>
+/*
+    很多时候，我们没有办法直接用一些东西去做判断条，比如 src
+    那我们就需要自定去定义一些判断条 - 开关
+*/ 
+var icon = document.querySelector("#icon");
+var isMonster = true; // false代表现在显示是monster,false 代表现在显示的monster2,默认显示是monster，所以初识 isMonster为true
+icon.onclick = function(){
+    // 比较运算符: 比较运算符的运算结果 - true||false
+    // if(false){ // if 最终只接受一个布尔值(true||false)
+    //     console.log("成立");
+    // } else {
+    //     console.log("不成立");
+    // }
+    if(isMonster){// true 1 张 false 2张
+        icon.src = "img/monster2.png";
+        //isMonster = false;
+        //isMonster = !isMonster;
+    } else {
+        icon.src = "img/monster.png";
+        //isMonster = true;
+        //isMonster = !isMonster;
+    }
+    isMonster = !isMonster;
+    // 总结：开关(状态)帮助我们去记录
+
+    /*
+        isMonster 记录员：记录我们图片切换到哪一张
+    */
+};
+</script>
+</body>
+</html>

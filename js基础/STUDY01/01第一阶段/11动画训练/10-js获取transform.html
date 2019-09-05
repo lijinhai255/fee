@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            margin: 30px auto;
+            width: 100px;
+            height: 100px;
+            background: red;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+// 每次点击时，让box在现有基础上，继续旋转 15deg
+(function(){
+    var box = document.querySelector("#box");
+    console.log(getComputedStyle(box)["transform"]);
+})();
+</script>
+</body>
+</html>

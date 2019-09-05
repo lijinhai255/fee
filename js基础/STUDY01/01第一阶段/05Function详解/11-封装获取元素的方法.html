@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="box">box</div>
+<div id="box2">box2</div>
+<div id="box3">box3</div>
+<script>
+// var box = document.getElementById("box");
+function _id(idName){ //通过 id 来获取元素
+    return document.getElementById(idName);
+}
+function _css(parent,selector){ //通过 css选择器获取 来获取元素
+    return parent.querySelector(selector);
+}
+function _cssAll(parent,selector){ //通过 css选择器获取 来获取一组元素
+    return parent.querySelectorAll(selector);
+}
+var box = _id("box");
+var box2 = _id("box2");
+var box3 = _css(document,"#box3");
+var boxs = _cssAll(document,"div");
+</script>    
+</body>
+</html>

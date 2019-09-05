@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+    #box {
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+</style>
+<script>
+console.log(document.getElementById("btn"));  // null 空      
+    // window.onload 页面内容加载完之后要执行的事情
+window.onload = function(){
+    console.log(document.getElementById("btn"));
+    document.getElementById("btn").onclick = function(){
+        document.getElementById("box").style.width = "200px";
+    }  
+};    
+    /*
+        el.onclick = function(){
+            //点击之后要执行的代码
+        }
+    */
+   
+      
+</script>
+</head>
+<body>
+<button id="btn">大</button>    
+<div id="box"></div>    
+</body>
+</html>

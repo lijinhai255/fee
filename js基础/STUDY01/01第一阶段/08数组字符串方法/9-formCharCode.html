@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var str = "243201,12358381,1221543"; // 243201,12358381,1221543
+//console.log(str.charCodeAt(2));
+//console.log(String.fromCharCode(21543));// 将 charCodeAt 再转换会字符
+var arr = str.split("1,12");
+//console.log(str.split("1,12"));
+for(var i = 0; i < arr.length; i++){
+    console.log(String.fromCharCode(arr[i]));
+}
+</script>    
+</body>
+</html>

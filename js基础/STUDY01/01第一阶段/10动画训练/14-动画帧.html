@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+    /* 动画帧 */
+    @keyframes move {
+         /* 0%{
+             width: 100px;
+             height: 100px;
+         } 
+            动画帧不定义的时候，默认就使用计算后样式
+         */
+         /* 0% {
+             width: 0;
+             height: 0;
+         } */
+         25% {
+             width: 100px;
+             height: 300px;
+         }
+         50% {
+             width: 300px;
+             height: 300px;
+         }
+         75% {
+            width: 300px;
+            height: 100px;
+         }
+         /* 100% {
+            width: 100px;
+            height: 100px; 
+         } 
+            100% 不定义 默认会回到计算后样式
+         */
+         100% {
+             width: 0;
+             height: 0;
+         }
+    } 
+    /*
+        默认动画执行完毕之后，会回到计算后样式
+    */
+    #box {
+        width:  100px;
+        height: 100px;
+        background: red;
+        animation: move 2s;
+    }
+</style>
+</head>
+<body>
+   <div id="box"></div>     
+</body>
+</html>

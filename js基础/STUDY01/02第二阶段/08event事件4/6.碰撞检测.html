@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            font-size: 100px;
+            color: #FFF;
+        }
+
+        .box2{
+            background: green;
+            top: 300px;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">el1</div>
+    <div class="box2">el2</div>
+    <script>
+        let box1 = document.querySelector('.box1')
+        let box2 = document.querySelector('.box2')
+
+
+        function css(el,attr,val){
+            if(arguments.length == 3){
+                el.style[attr] = val + 'px';
+            }else{
+                return parseInt(getComputedStyle(el)[attr]);
+            }
+        }
+
+        
+        drag(box1)
+        drag(box2)
+        
+        function drag(el){
+            el.addEventListener('mousedown',function(e){
+                let start = {
+                    l:e.clientX,
+                    t:e.clientY
+                }
+                let startPos = {
+                    l: css(el,'left'),
+                    t: css(el,'top')
+                }
+                function move(e){
+                    let dis = {
+                        l : e.clientX - start.l,
+                        t : e.clientY - start.t
+                    }
+                    el.style.left = dis.l + startPos.l +'px';
+                    el.style.top = dis.t + startPos.t +'px';
+
+                    // console.log(isContact(box1,box2));
+                    if(isContact(box1,box2)){
+                        box2.style.background = 'yellow';
+                    }else{
+                        box2.style.background = 'green';
+
+                    }
+
+                    e.preventDefault();
+                }
+
+                document.addEventListener('mousemove',move)
+                document.addEventListener('mouseup',function(){
+                    document.removeEventListener('mousemove',move)
+                },{
+                    once:true
+                })
+            })
+        }
+
+
+        
+
+        function isContact(el1,el2){
+            // 获取俩个元素的四条边位置
+            let el1Pos = el1.getBoundingClientRect();
+            let el2Pos = el2.getBoundingClientRect();
+            // console.log(el1Pos) 
+
+            // 没碰上
+            // el1.r < el2.l
+            // el1.l > el2.r 
+            // el1.b < el2.t
+            // el1.t > el2.b
+
+            // if(
+            //  el1Pos.right < el2Pos.left ||
+            //  el1Pos.left > el2Pos.right ||
+            //  el1Pos.bottom < el2Pos.top ||
+            //  el1Pos.top > el2Pos.bottom
+            // ){
+            //     return false;
+            // }else{
+            //     return true;
+            // }
+
+            // 碰上了
+            // el1.r > el2.l
+            // el1.l < el2.r 
+            // el1.b > el2.t
+            // el1.t < el2.b
+            if(
+                el1Pos.right > el2Pos.left &&
+                el1Pos.left < el2Pos.right  &&
+                el1Pos.bottom > el2Pos.top  &&
+                el1Pos.top < el2Pos.bottom
+            ){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var obj = {
+    "name":"开课吧",
+    "age":8
+};
+// // in 运算，判断对象中是否有对应属性
+// console.log("age","age" in obj); 
+// console.log("gander","gander" in obj);    
+
+for(var s in obj){
+    console.log(s); //对象的属性名
+    console.log(obj[s]); //获取对应的属性值
+}
+var arr = ["a","b","c"]
+for(var s in arr){
+    console.log(s,arr[s]);
+}
+</script>   
+</body>
+</html>

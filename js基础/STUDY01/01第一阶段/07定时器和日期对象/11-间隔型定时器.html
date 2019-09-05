@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+(function(){
+    /*
+        setInterval(function(){},间隔时间) 间隔型定时器
+
+        每间隔多长时间就做某件事
+    */
+    var nub = 0; 
+    setInterval(function(){
+        console.log(nub++);
+    },1000);
+})();
+</script>  
+</body>
+</html>

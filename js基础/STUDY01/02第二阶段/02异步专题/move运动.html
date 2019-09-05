@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        let div = document.querySelector('div');
+        
+        div.onclick = function(){
+            move(div,'left',200,function(){
+                console.log('运动完了')
+            });
+        }
+
+        function move(el,attr,target,cb){
+            let start = parseFloat(getComputedStyle(el)[attr]);
+            let dir = (target-start)/Math.abs(target-start);
+            let speed = dir*5;
+
+            requestAnimationFrame(fn)
+
+            function fn(){
+                let now = parseFloat(getComputedStyle(el)[attr]);
+                if(now == target){
+                    // 到达终点
+                    // cb&&cb(); 效果同下面一样
+                    if(cb){
+                        cb();
+                    }
+
+                }else{
+                    el.style[attr] = now+speed +'px';
+                    requestAnimationFrame(fn)
+                }
+            }
+
+            console.log(dir);
+        }
+    </script>
+</body>
+</html>

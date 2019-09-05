@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    JS 预解析机制 (变量提升)
+        JS 在读取到一个 script（或者一个函数作用域），会先进行一个预解析的过程，在这个过程中，会把 var 声明的变量 和 function 声明的函数体，提升到整个 script（或者一个函数作用域）最前边去
+        - var 在预解析时，会把 声明提升到最前边
+        - function的函数体在预解析时，会把整个函数体提升至最前边
+        - 在预解析时，会预解析 var 把 var 放在最前边，然后在预解析我们的 function
+        在预解析完之后，JS 才会从上到下一行一行解析代码并执行
+
+        
+
+函数体：
+function fn(){
+    console.log(1);
+}
+函数表达式:
+var fn = function(){}   
+
+*/ 
+console.log(a);
+function a(){
+    console.log(1);
+}
+var a = 0;
+</script>    
+</body>
+</html>

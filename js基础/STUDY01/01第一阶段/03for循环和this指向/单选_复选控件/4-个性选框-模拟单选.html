@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title></title>
+  <link rel="stylesheet" href="./radio.css">
+</head>
+
+<body>
+<div class="box">
+  <div class="option">
+    <a href="javascript:;" class="checked">男</a>
+    <a href="javascript:;">女</a>
+    <a href="javascript:;">保密</a>
+  </div>
+</div>
+<script>
+var options = document.querySelectorAll(".option>a");
+for(var i = 0; i < options.length; i++){
+  options[i].onclick = function(){
+      /*
+        给当前 option 加上 checked,并且移出其他项的 checked
+        思路：
+          1. 全部清洗掉,然后给当前加上选中
+
+      */
+      for(var i = 0; i < options.length; i++){
+        options[i].classList.remove("checked");
+      }
+      this.classList.add("checked");
+  };
+}
+</script>
+</body>
+
+</html>

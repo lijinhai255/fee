@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// bind ECMAscript 5.1   
+/*
+bind(fn,_this)
+参数：
+    fn 要绑定 this 的函数
+    _this 返回新函数 this 指向谁
+
+*/  
+
+function bind(fn,_this,...arg){
+    return function(...arg2){
+        fn.call(_this,...arg,...arg2);
+    }
+} 
+function fn(){
+    console.log(this,arguments);
+}
+
+var fn2 = bind(fn,document.body,1,2,3);
+fn2(4,5,6);
+var fn3 = bind(fn2,1);
+document.onclick = fn2;
+
+
+</script>    
+</body>
+</html>

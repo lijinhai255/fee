@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+    #box {
+        margin: 100px auto;
+        width: 200px;
+        height: 200px;
+        padding: 200px;
+        border: 2px solid #000;
+        perspective: 200px;
+        /* 
+            perspective 景深
+            在3D变换中，模拟我们的视角，元素在 z 轴的距离
+        */
+    }
+    #div {
+        transition: 3s;
+        width: 200px;
+        height: 200px;
+        background: red;
+        font: 140px/200px "宋体";
+        color: #fff;
+        text-align: center;
+    }
+    #box:hover #div {
+        transform: translateZ(-100px);
+    }
+/*
+    transform3D 变换
+        1. 旋转
+            rorateX() 围绕着 X 轴的旋转 (上下翻转)
+            rorateY() 围绕着 Y 轴的旋转
+            rorateZ() 围绕着 Z 轴的旋转
+
+        2. 位移
+            translateZ z轴位移
+*/    
+</style>
+
+</head>
+<body>
+<div id="box">
+    <div id="div">上</div>
+</div>    
+</body>
+</html>

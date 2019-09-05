@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    sort 排序
+        1. 排序默认是字典序
+            a
+                a
+                b
+            b
+                a
+                b
+
+    sort(function(n1,n2){
+        return 根据返回值，决定是否交互 n1 和 n2 的顺序
+            1. 大于等于 0 不颠倒位置
+            2. 小于 0 交互两个位置
+    })            
+*/    
+(function(){
+    var arr = [4,11,5,31,222];
+    arr.sort(function(n1,n2){
+        // 从大到小排序
+        // console.log(n1,n2);
+        // if(n1 > n2){
+        //     return -1;
+        // } 
+        // return 0;
+        // 从小到大排序
+        console.log(n1,n2);
+        if(n1 > n2){
+            return 0;
+        }
+        return -1;
+    });
+    console.log(arr); 
+})();
+</script>    
+</body>
+</html>

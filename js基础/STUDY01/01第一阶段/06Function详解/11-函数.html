@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//函数的每次执行之间没有任何关系,每次执行都相当与 在 js 内部 把这个代码重新写了一遍
+/*
+function fn(){
+    var b = 0;
+    b++;
+    console.log(b);
+}
+fn();
+// function fn2(){
+//     var b = 0;
+//     b++;
+//     console.log(b);
+// }
+// fn2();
+*/
+
+function fn(){
+    var b = 0;
+    // function fn2(){
+    //     b++;
+    //     console.log(b); // 1
+    // }
+    // fn2();
+    // function fn2_2(){
+    //     b++;
+    //     console.log(b); // 2
+    // }
+    // fn2_2();
+    // function fn2_3(){
+    //     b++;
+    //     console.log(b); // 3
+    // }
+    // fn2_3();
+    function fn2(){
+        b++;
+        console.log(b);
+    }
+    fn2();//1
+    fn2();//2
+    fn2();//3
+}
+fn();
+
+</script>    
+</body>
+</html>

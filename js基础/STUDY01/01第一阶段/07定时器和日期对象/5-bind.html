@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+   function.bind(指向,参数1,参数2,参数3) 绑定 this 指向
+   
+   调用 函数的 bind 方法，会返回 一个 绑定了 this 指向的新函数
+   第 0 个参数，就是 bind 返回的新函数的 this 指向
+
+   bind 返回的新函数，不能在进行绑定
+*/    
+
+function fn(a,b,c){
+    console.log(this,arguments,a,b,c);
+}
+var fn2 = fn.bind(document.body,1,2,3);
+// 'fn2(4,5,6);'
+document.onclick = fn2;
+</script>    
+</body>
+</html>

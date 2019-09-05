@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// NaN(not a number) 是 Number 中的一个特殊值
+
+var nub = NaN;
+console.log(typeof nub);
+// NaN 这不是一个数字，但是类型是 数字(Number)
+
+console.log(nub == nub);
+// NaN 不等于任何值，并且不等于它自己
+
+// isNaN(val) 如果 val 可以转成合法数字，就返回 false ，如果不能转换为合法数字(NaN) 会返回一个true
+
+console.log(isNaN(nub));
+</script>    
+</body>
+</html>

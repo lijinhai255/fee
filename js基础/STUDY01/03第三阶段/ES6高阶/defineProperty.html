@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// xml json;
+// [{name:"zhangsn"},{name:"李四"},{name:"王五"}];
+// mvvm; 数据驱动，数据优先；
+// 数据劫持；
+// let obj = {
+//     name:"张三",
+//     age:20
+// }
+// console.log(obj);
+// let myobj = {};
+// es5；
+//  Object.defineProperty(myobj,"name",{
+//      configurable:true,//可配置；
+//      enumerable:true, //可枚举；
+//     get(){
+//         console.log("get--name");
+//         return "张三";
+//     },
+//     set(newValue){
+//         console.log(newValue);
+//     }
+// })
+//  Object.defineProperty(myobj,"age",{
+//     configurable:true,//可配置；
+//     enumerable:true, //可枚举；
+//     get(){
+//         console.log("get--age");
+//         return 20;
+//     },
+//     set(newValue){
+//         console.log(newValue);
+//     }
+// })
+// myobj.name
+// console.log(myobj);
+// myobj.name = "王五";
+// delete myobj.name;
+// console.log(myobj);
+// 1.
+// for(let i in myobj){
+//     console.log(i);
+// }
+// 2.
+// Object.keys();
+// 3.
+// JSON.stringify
+// 4.
+// Object.assign
+let myobj = {
+    name:"张三",
+    age:20
+}
+// es6的； vue3.0
+let obj  = new Proxy(myobj,{
+    get(target,key){
+        console.log("get..")
+        return  target[key];
+    },
+    set(target,key,value){
+        console.log("set..")
+        target[key] = value;
+    }
+})
+// obj.name = "李四"
+
+
+
+
+</script>
+</html>

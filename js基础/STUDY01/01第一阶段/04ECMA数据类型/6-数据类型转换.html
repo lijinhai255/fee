@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+    数据类型转换： 把一种类型的数据，转换成另外一种
+
+    数据转换为数字:
+        parseInt();
+        parseFloat();
+        Number();
+-->
+<script>
+/*
+ 返回值类型  方法名称(参数1[,可选参数2])
+ 参数：
+
+ 可选参数:
+
+ 返回值:
+
+Number  parseInt(data[,radix]); 将数据转换一个整数，数据类型是数字
+
+参数：
+   data 要转会或者取整的数据
+
+可选参数：
+   radix data 的进制 
+
+返回值：
+    取整之后的结果
+*/
+
+/*
+    parseInt(string, radix) 将数据转换为整数返回
+        - 第一个参数接受的是个数据也就是我们要转换的数据
+        - 第二个参数 基数，也可以理解为 标注出我们要转换的这个字符串是几进制的数字
+*/
+//var nub = 10.1;
+//console.log(parseInt(nub)); // 10 取整 - 直接干掉小数点以后的值
+var str = "10abv";
+console.log(parseInt(str)); // 10
+var str2 = "10a10";
+console.log(parseInt(str2)); // 10
+var str3 = "a10";
+console.log(parseInt(str3)); // NaN  not a number 这不是一个数字
+/*
+parseInt 从左向右一位一位进行转换，如果遇到非数字就停止，然后把之前的数字提取出来，转成一个完成的数字，如果第0位就不是数字，直接返回 NaN
+*/
+</script>
+</body>
+</html>

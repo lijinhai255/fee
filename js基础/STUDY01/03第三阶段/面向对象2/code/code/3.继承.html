@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Dad() {
+        this.name = "张三";
+        this.age = 50;
+        this.money = "$1000000";
+    }
+    Dad.prototype.hobby = function () {
+        console.log("喜欢篮球");
+    }
+
+    function Son() {
+        Dad.call(this);
+    }
+    // 传址
+    Son.prototype = deepCopy(Dad.prototype);
+    Son.prototype.constructor = Son;
+    Son.prototype.hobby = function () {
+        console.log("喜欢游戏");
+    }
+    let zhangsan = new Son();
+    // console.log(zhangsan.money);
+    zhangsan.hobby();
+    // console.log(zhangsan.constructor);
+    let dad = new Dad();
+    // console.log(dad1.money);
+    dad.hobby();
+
+
+    function deepCopy(obj) {
+        let newObj = Array.isArray(obj) ? [] : {};
+        //循环原型上的东西；
+        for (let i in obj) {
+            if (obj.hasOwnProperty(i)) {
+                if (typeof obj[i] == "object") {
+                    newObj[i] = deepCopy(obj[i]);
+                } else {
+                    newObj[i] = obj[i];
+                }
+            }
+        }
+        return newObj;
+    }
+
+    // let str = "sfds";
+    // new String();
+    // console.log(str.constructor === String);
+
+</script>
+
+</html>

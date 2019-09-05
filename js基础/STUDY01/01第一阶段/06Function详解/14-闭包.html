@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+闭包：
+    形式：函数嵌套函数
+    作用：子函数可以访问父函数的作用域，但是父级不能访问子级的
+
+  闭包就是能够读取其他函数内部变量的函数。例如在javascript中，只有函数内部的子函数才能读取局部变量，所以闭包可以理解成“定义在一个函数内部的函数“。在本质上，闭包是将函数内部和函数外部连接起来的桥梁  
+*/
+function fn(){
+    var a = 0;
+    function fn2(){
+        console.log(a);    
+    }
+    fn2();
+}
+fn();
+</script>    
+</body>
+</html>
