@@ -147,7 +147,7 @@ output:{
 >模块解析,模块转换器,用于把模块原内容按照需求转换成新的内容
 
 **webpack是模块打包工具,而模块不仅仅是js,也可能是css,图片或者其他格式 但是webpack默只知道如何处理js和json模块,那么其他格式的模块处理就需要loader**
-
+g
 >常见的loader
 ````
     style-loader
