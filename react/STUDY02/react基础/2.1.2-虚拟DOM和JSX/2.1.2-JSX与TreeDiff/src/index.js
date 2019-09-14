@@ -12,9 +12,6 @@ class Content extends Component{
       </div>
     )
   }
-
-
-
 }
 
 class Item extends Component{

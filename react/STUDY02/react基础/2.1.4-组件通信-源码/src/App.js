@@ -28,7 +28,7 @@ class Clock extends Component {
 class Room extends React.Component{
 
 
-
+	//接受 clock 组件穿过来的方法 传递给person组件
 	render() {
 
 		return (

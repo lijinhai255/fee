@@ -1,4 +1,5 @@
-# webpack![GitHub Logo](../../image/2019-09-03_113320.png)
+# webpack
+![GitHub Logo](../../image/2019-09-03_113320.png)
 **webpack打包工具**
 **Webpack可以看做是模块打包工具:分析项目结构,找到javaScript模块以及其他的一些浏览器不能直接运行的拓展语言(Scss,TypeScript登),并将其打包成合适的格式以供浏览器的使用**
 
@@ -174,7 +175,7 @@ module:{
 }
 ````
 
-**当webpack处理不认识的模块时,需要在webpack中的module处进行配置,当检测到是什么格式的模块,就会使用什么loader来处理**\
+**当webpack处理不认识的模块时,需要在webpack中的module处进行配置,当检测到是什么格式的模块,就会使用什么loader来处理**
 
 * loader:file-loader: 处理静态资源模块
 > 原理是把打包入口中识别出的资源模块,移动到输出目录,并且返回一个地址名称
@@ -234,7 +235,7 @@ root.append(img);
 body {
   background: red;
   font-family: "webfont" !important;
-  font-size: 20px;
+  font-size: 20pdx;
 }
 
 ````
@@ -476,16 +477,54 @@ plugins:[
 
 ### souseMap
 > 源代码与打包后的代码的映射关系
+在dev模式中，默认开启，关闭的话 可以在配置文件里、
+<!-- 2019-09-07_190102.png -->
+![souseMap的使用](../../image/2019-09-07_190102.png)
+````
+devtool:"none"
 
+**devtool的介绍：https://webpack.js.org/configuration/devtool#devtool
+eval:速度最快,使eval包裹模块代码,
+source-map： 产生.map文件
+cheap:较快，不用管列的信息,也不包含loader的sourcemap
+Module：第三⽅模块，包含loader的sourcemap(如jsx to js ，babel
+的sourcemap)
+inline： 将 .map 作为DataURI嵌⼊，不单独生成 .map文件**
 
-
-
+> souseMap 推荐配置
+````
+devtool:"cheap-module-eval-source-map",// 开发环境配置
+devtool:"cheap-module-source-map", // 线上⽣成配置
+````
 ### wwebpackDevServer
 
+````
+ npm install webpack-dev-server -D
+````
+修改下package.json
+````
+"scripts": {
+ "server": "webpack-dev-server"
+ },
+````
+在webpack.config.js配置：
+````
+devServer: {
+ contentBase: "./dist",
+ open: true,
+ port: 8081
+ },
+````
 
-
-
-
+> 跨域
+修改webpack.config.js 设置服务器代理
+````
+proxy: {
+"/api": {
+target: "http://localhost:9092"
+ }
+ }
+````
 
 
 
